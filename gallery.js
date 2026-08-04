@@ -6,19 +6,57 @@
 (function () {
   'use strict';
 
-  let imageBasePath = 'public/images';
+  // ---------- Config ----------
+  const MANIFEST_URL = 'public/manifest.json';
+  const IMAGE_BASE = 'public';
+
+  const CATEGORY_META = {
+    tiles:        { label: 'Tiles',        tagline: 'Explore premium floor & wall tile inspirations' },
+    sanitaryware: { label: 'Sanitaryware', tagline: 'Modern basins, WCs & sanitary fixtures' },
+    bathware:     { label: 'Bathware',     tagline: 'Luxury showers, faucets & bath accessories' },
+    kitchen:      { label: 'Kitchen',      tagline: 'Beautiful modular kitchen design ideas' },
+    panels:       { label: 'Panels',       tagline: 'Elegant wall panels & decorative cladding' },
+    homedecor:    { label: 'Home Decor',   tagline: 'Stunning interiors & living space inspirations' },
+  };
+
+  // ---------- DOM refs ----------
+  const galleryGrid    = document.getElementById('galleryGrid');
+  const galleryTitle   = document.getElementById('galleryTitle');
+  const galleryCount   = document.getElementById('galleryCount');
+  const galleryDesc    = document.getElementById('galleryDesc');
+  const breadcrumbCat  = document.getElementById('breadcrumbCat');
+  const breadcrumbSep  = document.getElementById('breadcrumbCatSep');
+  const categoryPills  = document.getElementById('categoryPills');
+  const emptyState     = document.getElementById('emptyState');
+  const navLinks       = document.getElementById('navLinks');
+
+  // Lightbox
+  const lightbox       = document.getElementById('lightbox');
+  const lbImg          = document.getElementById('lightboxImg');
+  const lbCaption      = document.getElementById('lightboxCaption');
+  const lbCounter      = document.getElementById('lightboxCounter');
+  const lbClose        = document.getElementById('lightboxClose');
+  const lbPrev         = document.getElementById('lightboxPrev');
+  const lbNext         = document.getElementById('lightboxNext');
+
+  // Mobile nav
+  const mobileMenuBtn   = document.getElementById('mobileMenuBtn');
+  const mobileOverlay   = document.getElementById('mobileNavOverlay');
+  const mobileDrawer    = document.getElementById('mobileNavDrawer');
+  const mobileClose     = document.getElementById('mobileNavClose');
+  const mobileNavLinks  = document.getElementById('mobileNavLinks');
+
+  let manifest = {};
+  let currentImages = [];
+  let lightboxIndex = 0;
+  let currentCategory = null;
 
   // ---------- Init ----------
   async function init() {
     try {
-      let res = await fetch('public/images/manifest.json');
-      if (res.ok) {
-        imageBasePath = 'public/images';
-      } else {
-        res = await fetch('images/manifest.json');
-        if (res.ok) {
-          imageBasePath = 'images';
-        }
+      let res = await fetch(MANIFEST_URL);
+      if (!res.ok) {
+        res = await fetch('manifest.json');
       }
       if (res.ok) {
         manifest = await res.json();
@@ -252,9 +290,10 @@
 
   // ---------- Mobile Nav ----------
   function buildMobileNav() {
+    if (!mobileNavLinks) return;
     mobileNavLinks.innerHTML = '';
     var homeLink = document.createElement('a');
-    homeLink.href = 'buildsy-inspiration-gallery (2).html';
+    homeLink.href = 'index.html';
     homeLink.textContent = 'Home';
     mobileNavLinks.appendChild(homeLink);
 
@@ -273,50 +312,53 @@
   }
 
   function setupMobileMenu() {
+    if (!mobileMenuBtn) return;
     mobileMenuBtn.addEventListener('click', function (e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         openMobileMenu();
       }
     });
-    mobileClose.addEventListener('click', closeMobileMenu);
-    mobileOverlay.addEventListener('click', closeMobileMenu);
+    if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
   }
 
   function openMobileMenu() {
-    mobileOverlay.classList.add('active');
-    mobileDrawer.classList.add('active');
+    if (mobileOverlay) mobileOverlay.classList.add('active');
+    if (mobileDrawer) mobileDrawer.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
   function closeMobileMenu() {
-    mobileOverlay.classList.remove('active');
-    mobileDrawer.classList.remove('active');
+    if (mobileOverlay) mobileOverlay.classList.remove('active');
+    if (mobileDrawer) mobileDrawer.classList.remove('active');
     document.body.style.overflow = '';
   }
 
   // ---------- Active Nav Highlight ----------
   function updateActiveNav() {
-    if (!navLinks) return;
-    var links = navLinks.querySelectorAll('a');
-    links.forEach(function (a) {
-      a.classList.remove('active');
-      var href = a.getAttribute('href') || '';
-      if (currentCategory && href.includes('#' + currentCategory)) {
-        a.classList.add('active');
-      } else if (!currentCategory && href === 'inspirations.html') {
-        a.classList.add('active');
-      }
-    });
+    if (navLinks) {
+      var links = navLinks.querySelectorAll('a');
+      links.forEach(function (a) {
+        a.classList.remove('active');
+        var href = a.getAttribute('href') || '';
+        if (currentCategory && href.includes('#' + currentCategory)) {
+          a.classList.add('active');
+        } else if (!currentCategory && href === 'inspirations.html') {
+          a.classList.add('active');
+        }
+      });
+    }
 
-    // Mobile nav
-    var mLinks = mobileNavLinks.querySelectorAll('a');
-    mLinks.forEach(function (a) {
-      a.classList.remove('active');
-      var href = a.getAttribute('href') || '';
-      if (currentCategory && href.includes('#' + currentCategory)) {
-        a.classList.add('active');
-      }
-    });
+    if (mobileNavLinks) {
+      var mLinks = mobileNavLinks.querySelectorAll('a');
+      mLinks.forEach(function (a) {
+        a.classList.remove('active');
+        var href = a.getAttribute('href') || '';
+        if (currentCategory && href.includes('#' + currentCategory)) {
+          a.classList.add('active');
+        }
+      });
+    }
   }
 
   // ---------- SEO ----------

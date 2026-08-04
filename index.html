@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buildsy — Inspiration Gallery</title>
+<meta name="description" content="Browse premium inspiration galleries for tiles, bathware, kitchen, sanitaryware, panels, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #10263F;
+    --navy-dark: #0B1B2D;
+    --navy-soft: #1B3A5C;
+    --blue-accent: #2563EB;
+    --blue-hover: #1D4ED8;
+    --copper: #B8794F;
+    --copper-soft: #D6A47C;
+    --cream-bg: #F4EFEA;
+    --cream-card: #FAF8F5;
+    --stone: #E5DFD7;
+    --ink: #111827;
+    --slate: #64748B;
+    --radius-lg: 20px;
+    --shadow-md: 0 12px 32px rgba(16, 38, 63, 0.12);
+    --shadow-lg: 0 24px 60px rgba(16, 38, 63, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #F8FAFC;
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+
+  /* ---------- Full Page Navbar ---------- */
+  .navbar {
+    background: var(--navy);
+    color: #fff;
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(16, 38, 63, 0.15);
+  }
+  .navbar-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .navbar-links {
+    display: flex;
+    gap: 32px;
+  }
+  .navbar-links a {
+    color: #CBD5E1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+  .navbar-links a:hover, .navbar-links a.active {
+    color: #fff;
+    font-weight: 600;
+  }
+  .navbar-cta {
+    background: var(--blue-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 99px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+  }
+  .navbar-cta:hover {
+    background: var(--blue-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37,99,235,0.4);
+  }
+
+  /* ---------- Main Page Content ---------- */
+  main.main-content {
+    flex: 1;
+    padding: 48px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+  .hero-section h1 {
+    font-size: 38px;
+    color: var(--navy);
+    margin: 0 0 12px;
+    line-height: 1.15;
+  }
+  .hero-section p {
+    font-size: 16px;
+    color: var(--slate);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Search Bar */
+  .search-box-wrap {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 14px 22px 14px 50px;
+    border-radius: 99px;
+    border: 1px solid #E2E8F0;
+    background: #fff;
+    font-size: 14.5px;
+    color: var(--ink);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    outline: none;
+    transition: all 0.25s ease;
+  }
+  .search-input:focus {
+    border-color: var(--blue-accent);
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.14);
+  }
+  .search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94A3B8;
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Category Filter Pills */
+  .filter-pills-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 44px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .filter-pill {
+    padding: 10px 24px;
+    border-radius: 99px;
+    border: 1px solid #E2E8F0;
+    background: #fff;
+    color: var(--slate);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  }
+  .filter-pill:hover {
+    border-color: #CBD5E1;
+    color: var(--navy);
+  }
+  .filter-pill.active {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+    box-shadow: 0 6px 18px rgba(16,38,63,0.18);
+  }
+
+  /* ---------- Carousel Stage Container ---------- */
+  .carousel-stage {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 440px;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  /* Nav Floating Buttons */
+  .carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 30;
+    font-size: 24px;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .carousel-nav-btn:hover {
+    background: var(--navy);
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 30px rgba(16,38,63,0.25);
+  }
+  .carousel-nav-btn.prev { left: 40px; }
+  .carousel-nav-btn.next { right: 40px; }
+
+  @media (max-width: 768px) {
+    .carousel-nav-btn.prev { left: 10px; }
+    .carousel-nav-btn.next { right: 10px; }
+    .navbar { padding: 14px 20px; }
+    .navbar-links { display: none; }
+  }
+
+  /* Track & Cards */
+  .carousel-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    height: 420px;
+  }
+
+  /* Card Item */
+  .carousel-card {
+    position: absolute;
+    width: 360px;
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+    padding: 28px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Carousel Slide States */
+  .carousel-card.state-center {
+    z-index: 20;
+    transform: translateX(0) scale(1.08);
+    box-shadow: 0 25px 60px rgba(16,38,63,0.16);
+    border-color: #CBD5E1;
+    opacity: 1;
+  }
+  .carousel-card.state-left {
+    z-index: 10;
+    transform: translateX(-260px) scale(0.88);
+    opacity: 0.65;
+    pointer-events: auto;
+  }
+  .carousel-card.state-right {
+    z-index: 10;
+    transform: translateX(260px) scale(0.88);
+    opacity: 0.65;
+    pointer-events: auto;
+  }
+  .carousel-card.state-far-left {
+    z-index: 5;
+    transform: translateX(-420px) scale(0.75);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .carousel-card.state-far-right {
+    z-index: 5;
+    transform: translateX(420px) scale(0.75);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .card-header-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 18px;
+  }
+
+  /* 2x3 Grid of Swatches */
+  .swatch-grid-2x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .swatch-box {
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swatch-box:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+    z-index: 2;
+  }
+
+  .card-footer-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: auto;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .card-footer-link:hover {
+    color: var(--blue-hover);
+    text-decoration: underline;
+  }
+
+  /* Pagination Dots */
+  .pagination-dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    justify-content: center;
+  }
+  .pag-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .pag-dot.active {
+    background: var(--blue-accent);
+    width: 28px;
+    border-radius: 99px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.footer {
+    background: var(--navy-dark);
+    color: #94A3B8;
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    margin-top: auto;
+  }
+  footer.footer p { margin: 0; }
+
+  /* ---------- Detail Modal Overlay ---------- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  /* Scrollable & Clickable Gallery Modal Window */
+  .gallery-modal-window {
+    background: #FFFFFF;
+    border-radius: 24px;
+    max-width: 960px;
+    width: 100%;
+    max-height: 88vh;
+    height: 680px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 90px rgba(10, 25, 45, 0.35);
+    transform: scale(0.92);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .modal-overlay.active .gallery-modal-window {
+    transform: scale(1);
+  }
+
+  /* Modal Header */
+  .gallery-modal-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .gallery-cat-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--copper-soft);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .gallery-modal-title {
+    font-size: 22px;
+    margin: 0;
+    color: #FFFFFF;
+    font-weight: 700;
+  }
+  .modal-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+  }
+
+  /* Gallery Subheader / Search Filter */
+  .gallery-filter-bar {
+    background: #F8FAFC;
+    padding: 12px 28px;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .gallery-count-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--slate);
+  }
+  .gallery-search-mini input {
+    padding: 8px 16px;
+    border-radius: 99px;
+    border: 1px solid #CBD5E1;
+    font-size: 13px;
+    outline: none;
+    width: 220px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .gallery-search-mini input:focus {
+    border-color: var(--blue-accent);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+  }
+
+  /* Gallery Modal Body - Split Layout */
+  .gallery-modal-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Left Column: Scrollable Grid */
+  .gallery-grid-container {
+    flex: 1;
+    padding: 20px 24px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 16px;
+    align-content: start;
+    background: #FAF8F5;
+  }
+  .gallery-grid-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  .gallery-grid-container::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+  .gallery-grid-container::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 99px;
+  }
+  .gallery-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+
+  /* Gallery Item Card */
+  .gallery-item-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .gallery-item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(16, 38, 63, 0.1);
+    border-color: var(--blue-accent);
+  }
+  .gallery-item-card.active-selected {
+    border: 2px solid var(--blue-accent);
+    background: #EFF6FF;
+    box-shadow: 0 10px 24px rgba(37,99,235,0.18);
+  }
+  .gallery-item-card.active-selected::after {
+    content: '✓ Selected';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--blue-accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+  }
+
+  .card-img-thumb {
+    width: 100%;
+    height: 115px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    background-color: #E2E8F0;
+    display: block;
+  }
+  .card-color-thumb {
+    width: 100%;
+    height: 115px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .item-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+  .item-price {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--copper);
+    margin-top: auto;
+  }
+  .item-tag {
+    font-size: 11px;
+    color: var(--slate);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* Right Sidebar: Interactive Detail View */
+  .gallery-detail-sidebar {
+    width: 350px;
+    background: #FFFFFF;
+    border-left: 1px solid #E2E8F0;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .gallery-detail-sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .gallery-detail-sidebar::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 99px;
+  }
+
+  .sidebar-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+  }
+  .sidebar-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sidebar-color-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+  }
+  .sidebar-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(16, 38, 63, 0.85);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+
+  .sidebar-title {
+    font-size: 19px;
+    margin: 0 0 6px;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+  .sidebar-price {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--copper);
+    margin-bottom: 12px;
+  }
+  .sidebar-desc {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.55;
+    margin: 0 0 18px;
+  }
+
+  .sidebar-specs-list {
+    background: #F8FAFC;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #E2E8F0;
+  }
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dashed #E2E8F0;
+    font-size: 12px;
+  }
+  .spec-item:last-child {
+    border-bottom: none;
+  }
+  .spec-label {
+    color: var(--slate);
+    font-weight: 500;
+  }
+  .spec-val {
+    color: var(--navy);
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .sidebar-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-primary-cta {
+    width: 100%;
+    background: var(--blue-accent);
+    color: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+  }
+  .btn-primary-cta:hover {
+    background: var(--blue-hover);
+    transform: translateY(-1px);
+  }
+  .btn-secondary-action {
+    width: 100%;
+    background: transparent;
+    color: var(--navy);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #CBD5E1;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary-action:hover {
+    background: #F1F5F9;
+    border-color: var(--navy);
+  }
+
+  @media (max-width: 768px) {
+    .gallery-modal-window {
+      height: 90vh;
+      max-height: 90vh;
+    }
+    .gallery-modal-body {
+      flex-direction: column;
+    }
+    .gallery-grid-container {
+      max-height: 50%;
+    }
+    .gallery-detail-sidebar {
+      width: 100%;
+      border-left: none;
+      border-top: 1px solid #E2E8F0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Full Page Navigation Bar -->
+<header class="navbar">
+  <a href="index.html" class="navbar-logo">Buildsy</a>
+  <nav class="navbar-links">
+    <a class="nav-link" data-cat-index="0" href="index.html">Home</a>
+    <a class="nav-link active" data-cat-index="0" href="inspirations.html#tiles">Tiles</a>
+    <a class="nav-link" data-cat-index="1" href="inspirations.html#sanitaryware">Sanitaryware</a>
+    <a class="nav-link" data-cat-index="2" href="inspirations.html#bathware">Bathware</a>
+    <a class="nav-link" data-cat-index="3" href="inspirations.html#kitchen">Kitchen</a>
+    <a class="nav-link" data-cat-index="4" href="inspirations.html#panels">Panels</a>
+    <a class="nav-link" href="inspirations.html#homedecor">Home Decor</a>
+  </nav>
+  <button class="navbar-cta">Visit Store</button>
+</header>
+
+<!-- Main Application Section -->
+<main class="main-content">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="font-serif">Inspiration Gallery</h1>
+    <p>Visualize your dream space with Buildsy — browse real-life inspirations</p>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-box-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search inspirations...">
+  </div>
+
+  <!-- Category Pills Bar -->
+  <div class="filter-pills-bar" id="pillsBar">
+    <button class="filter-pill active" data-cat-index="0">All</button>
+    <button class="filter-pill" data-cat-index="0">Tiles</button>
+    <button class="filter-pill" data-cat-index="1">Sanitaryware</button>
+    <button class="filter-pill" data-cat-index="2">Bathware</button>
+    <button class="filter-pill" data-cat-index="3">Pipes</button>
+    <button class="filter-pill" data-cat-index="4">Panels</button>
+  </div>
+
+  <!-- Carousel Stage -->
+  <div class="carousel-stage">
+    <button class="carousel-nav-btn prev" id="btnPrevCarousel" aria-label="Previous Slide">‹</button>
+    
+    <div class="carousel-track" id="carouselTrack">
+      
+      <!-- Category Card 0: Tiles (Center Pop-up Grid) -->
+      <div class="carousel-card state-center" data-index="0" data-cat="Tiles">
+        <h3 class="card-header-title font-serif">Tiles</h3>
+        <div class="swatch-grid-2x3">
+          <div class="swatch-box" style="background:#EBE6DD;" title="Cream Ivory Tile"></div>
+          <div class="swatch-box" style="background:#D4E0EB;" title="Sky Ceramic Tile"></div>
+          <div class="swatch-box" style="background:#3E6B8C;" title="Ocean Blue Vitrified"></div>
+          <div class="swatch-box" style="background:#E2D5C3;" title="Warm Sand Tile"></div>
+          <div class="swatch-box" style="background:#1B2A3A;" title="Charcoal Slate Tile"></div>
+          <div class="swatch-box" style="background:#C4AA90;" title="Terracotta Tile"></div>
+        </div>
+        <a class="card-footer-link" href="inspirations.html#tiles" data-cat="Tiles">View all inspirations →</a>
+      </div>
+
+      <!-- Category Card 1: Sanitaryware -->
+      <div class="carousel-card state-right" data-index="1" data-cat="Sanitaryware">
+        <h3 class="card-header-title font-serif">Sanitaryware</h3>
+        <div class="swatch-grid-2x3">
+          <div class="swatch-box" style="background:#FAF8F5;" title="Matte Ceramic WC"></div>
+          <div class="swatch-box" style="background:#E2E8F0;" title="Tabletop Sink"></div>
+          <div class="swatch-box" style="background:#CBD5E1;" title="Gloss Basin"></div>
+          <div class="swatch-box" style="background:#8C6A4A;" title="Warm Earth Urinal"></div>
+          <div class="swatch-box" style="background:#F1F5F9;" title="Wall-Mounted WC"></div>
+          <div class="swatch-box" style="background:#334155;" title="Dark Accent Sink"></div>
+        </div>
+        <a class="card-footer-link" href="inspirations.html#sanitaryware" data-cat="Sanitaryware">View all inspirations →</a>
+      </div>
+
+      <!-- Category Card 2: Bathware -->
+      <div class="carousel-card state-far-right" data-index="2" data-cat="Bathware">
+        <h3 class="card-header-title font-serif">Bathware</h3>
+        <div class="swatch-grid-2x3">
+          <div class="swatch-box" style="background:#B8794F;" title="Copper Brass Faucet"></div>
+          <div class="swatch-box" style="background:#D6A47C;" title="Rose Gold Shower"></div>
+          <div class="swatch-box" style="background:#475569;" title="Matte Black Mixer"></div>
+          <div class="swatch-box" style="background:#94A3B8;" title="Chrome Rainhead"></div>
+          <div class="swatch-box" style="background:#F8FAFC;" title="Polished Tray"></div>
+          <div class="swatch-box" style="background:#64748B;" title="Brushed Steel Towel Bar"></div>
+        </div>
+        <a class="card-footer-link" href="inspirations.html#bathware" data-cat="Bathware">View all inspirations →</a>
+      </div>
+
+      <!-- Category Card 3: Pipes -->
+      <div class="carousel-card state-far-left" data-index="3" data-cat="Pipes">
+        <h3 class="card-header-title font-serif">Pipes</h3>
+        <div class="swatch-grid-2x3">
+          <div class="swatch-box" style="background:#4A7A6B;" title="CPVC Hot Line"></div>
+          <div class="swatch-box" style="background:#33594D;" title="Heavy Drainage PVC"></div>
+          <div class="swatch-box" style="background:#64748B;" title="Steel Couplers"></div>
+          <div class="swatch-box" style="background:#94A3B8;" title="Elbow Joint"></div>
+          <div class="swatch-box" style="background:#CBD5E1;" title="Flex Hose"></div>
+          <div class="swatch-box" style="background:#334155;" title="Pressure Valve"></div>
+        </div>
+        <a class="card-footer-link" href="inspirations.html#kitchen" data-cat="Kitchen">View all inspirations →</a>
+      </div>
+
+      <!-- Category Card 4: Panels -->
+      <div class="carousel-card state-left" data-index="4" data-cat="Panels">
+        <h3 class="card-header-title font-serif">Panels</h3>
+        <div class="swatch-grid-2x3">
+          <div class="swatch-box" style="background:#6B5B8C;" title="Louvered PVC Panel"></div>
+          <div class="swatch-box" style="background:#4E3F6B;" title="Waterproof Wall Board"></div>
+          <div class="swatch-box" style="background:#D6A47C;" title="Fluted Oak Panel"></div>
+          <div class="swatch-box" style="background:#E2E8F0;" title="Acoustic Slat"></div>
+          <div class="swatch-box" style="background:#94A3B8;" title="Stone Pattern Panel"></div>
+          <div class="swatch-box" style="background:#1E293B;" title="Midnight Charcoal Slat"></div>
+        </div>
+        <a class="card-footer-link" href="inspirations.html#panels" data-cat="Panels">View all inspirations →</a>
+      </div>
+
+    </div>
+
+    <button class="carousel-nav-btn next" id="btnNextCarousel" aria-label="Next Slide">›</button>
+  </div>
+
+  <!-- Pagination Dots -->
+  <div class="pagination-dots" id="dotsTrack">
+    <span class="pag-dot active" data-index="0"></span>
+    <span class="pag-dot" data-index="1"></span>
+    <span class="pag-dot" data-index="2"></span>
+    <span class="pag-dot" data-index="3"></span>
+    <span class="pag-dot" data-index="4"></span>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Buildsy.in — Building Materials & Inspiration Platform. All rights reserved.</p>
+</footer>
+
+<!-- Scrollable & Clickable Product Gallery Modal Overlay -->
+<div class="modal-overlay" id="detailModal">
+  <div class="gallery-modal-window">
+    
+    <!-- Modal Header -->
+    <div class="gallery-modal-header">
+      <div>
+        <span class="gallery-cat-badge" id="modalCatTag">BUILDSY · TILES GALLERY</span>
+        <h2 class="gallery-modal-title font-serif" id="modalGalleryTitle">Tiles Product Gallery</h2>
+      </div>
+      <button class="modal-close-btn" id="btnCloseModal" title="Close Gallery">✕</button>
+    </div>
+
+    <!-- Subheader Filter & Item Count -->
+    <div class="gallery-filter-bar">
+      <span class="gallery-count-text" id="modalProductCount">8 items available</span>
+      <div class="gallery-search-mini">
+        <input type="text" id="modalSearchInput" placeholder="Filter product items...">
+      </div>
+    </div>
+
+    <!-- Modal Content: Scrollable Grid + Active Product Detail Sidebar -->
+    <div class="gallery-modal-body">
+      
+      <!-- Left: Scrollable Product Cards Grid -->
+      <div class="gallery-grid-container" id="galleryGrid">
+        <!-- Dynamically injected product cards -->
+      </div>
+
+      <!-- Right: Interactive Product Detail Sidebar -->
+      <div class="gallery-detail-sidebar" id="gallerySidebar">
+        <div class="sidebar-img-wrapper" id="sidebarImgWrap">
+          <img src="" id="sidebarProductImg" alt="Product Preview" class="sidebar-product-img">
+          <div id="sidebarColorBox" class="sidebar-color-box" style="display:none;"></div>
+          <span class="sidebar-badge" id="sidebarBadge">Vitrified</span>
+        </div>
+        <div class="sidebar-content">
+          <h3 class="sidebar-title font-serif" id="sidebarTitle">Product Title</h3>
+          <div class="sidebar-price" id="sidebarPrice">₹ 185 / sq.ft</div>
+          <p class="sidebar-desc" id="sidebarDesc">Select any product from the gallery on the left to view full specifications.</p>
+
+          <div class="sidebar-specs-list">
+            <div class="spec-item">
+              <span class="spec-label">Dimensions</span>
+              <span class="spec-val" id="specDim">-</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Finish / Style</span>
+              <span class="spec-val" id="specFinish">-</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Water / Durability</span>
+              <span class="spec-val" id="specWater">-</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Warranty</span>
+              <span class="spec-val" id="specWarranty">-</span>
+            </div>
+          </div>
+
+          <div class="sidebar-actions">
+            <button class="btn-primary-cta" id="btnRequestQuote">Request Specifications & Quote</button>
+            <button class="btn-secondary-action" id="btnDownloadSpec">Download Datasheet 📥</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Carousel Logic & Animations ----------
+  const cards = Array.from(document.querySelectorAll('.carousel-card'));
+  const dots = Array.from(document.querySelectorAll('.pag-dot'));
+  const btnPrev = document.getElementById('btnPrevCarousel');
+  const btnNext = document.getElementById('btnNextCarousel');
+  const navLinks = document.querySelectorAll('.navbar-links .nav-link');
+  const filterPills = document.querySelectorAll('.filter-pill');
+  
+  let activeIndex = 0;
+  const totalCards = cards.length;
+
+  function updateCarousel(newIndex) {
+    activeIndex = (newIndex + totalCards) % totalCards;
+
+    cards.forEach((card, i) => {
+      card.className = 'carousel-card'; // reset classes
+      
+      const diff = (i - activeIndex + totalCards) % totalCards;
+
+      if (diff === 0) {
+        card.classList.add('state-center');
+      } else if (diff === 1) {
+        card.classList.add('state-right');
+      } else if (diff === totalCards - 1) {
+        card.classList.add('state-left');
+      } else if (diff === 2) {
+        card.classList.add('state-far-right');
+      } else {
+        card.classList.add('state-far-left');
+      }
+    });
+
+    // Update Dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+
+    // Update Pills & Nav Links
+    filterPills.forEach((pill, i) => {
+      pill.classList.toggle('active', parseInt(pill.dataset.catIndex) === activeIndex);
+    });
+    navLinks.forEach((link, i) => {
+      link.classList.toggle('active', parseInt(link.dataset.catIndex) === activeIndex);
+    });
+  }
+
+  btnPrev.addEventListener('click', () => updateCarousel(activeIndex - 1));
+  btnNext.addEventListener('click', () => updateCarousel(activeIndex + 1));
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index);
+      updateCarousel(idx);
+    });
+  });
+
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const idx = parseInt(pill.dataset.catIndex);
+      updateCarousel(idx);
+    });
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (link.getAttribute('href') && link.getAttribute('href').includes('inspirations.html')) return;
+      e.preventDefault();
+      const idx = parseInt(link.dataset.catIndex);
+      updateCarousel(idx);
+    });
+  });
+
+  // ---------- Product Gallery Modal Data & Interactive Logic ----------
+  const GALLERY_DATA = {
+    Tiles: {
+      categoryName: 'Tiles Product Gallery',
+      badgeText: 'BUILDSY · TILES COLLECTION',
+      items: [
+        {
+          id: 't1',
+          name: 'Calacatta Gold Italian Marble',
+          price: '₹ 185 / sq.ft',
+          tag: 'Vitrified • High Gloss',
+          img: 'assets/tiles_product_1.png',
+          desc: 'Premium Italian marble aesthetic with golden veining. Glazed vitrified slab tile engineered with zero porosity and supreme scratch resistance.',
+          dim: '1200 x 600 mm',
+          finish: 'Ultra High Gloss Polish',
+          water: '< 0.05% Moisture',
+          warranty: '10 Years Warranty'
+        },
+        {
+          id: 't2',
+          name: 'Royal Ivory Polish Slab',
+          price: '₹ 140 / sq.ft',
+          tag: 'Porcelain • Soft Silk',
+          img: 'assets/luxury_marble_tiles_1785225420599.png',
+          desc: 'Warm cream ivory tile with cloud vein patterns, designed for grand living room floors and executive suites.',
+          dim: '800 x 800 mm',
+          finish: 'Polished Silk',
+          water: '< 0.10% Absorption',
+          warranty: '10 Years Warranty'
+        },
+        {
+          id: 't3',
+          name: 'Ocean Blue Vitrified Tile',
+          price: '₹ 165 / sq.ft',
+          tag: 'Glazed Vitrified',
+          bgColor: '#3E6B8C',
+          desc: 'Vibrant oceanic azure vitrified tiles designed to create striking feature walls, bathroom accents, and reception desks.',
+          dim: '1200 x 600 mm',
+          finish: 'Mirror Polish',
+          water: '< 0.05% Moisture',
+          warranty: '8 Years Warranty'
+        },
+        {
+          id: 't4',
+          name: 'Charcoal Slate Rustic Tile',
+          price: '₹ 120 / sq.ft',
+          tag: 'Slate • Anti-Skid',
+          bgColor: '#1B2A3A',
+          desc: 'Deep slate texture crafted for outdoor patios, pool decks, and rustic industrial accent walls.',
+          dim: '600 x 300 mm',
+          finish: 'Matte Textured R11',
+          water: '< 0.20% Absorption',
+          warranty: '15 Years Warranty'
+        },
+        {
+          id: 't5',
+          name: 'Warm Terracotta Natural Clay',
+          price: '₹ 95 / sq.ft',
+          tag: 'Eco-Ceramic',
+          bgColor: '#C4AA90',
+          desc: 'Earthy terracotta finish bringing Mediterranean warmth to outdoor balconies, terraces, and courtyard spaces.',
+          dim: '400 x 400 mm',
+          finish: 'Raw Matte',
+          water: '< 1.50% Moisture',
+          warranty: '5 Years Warranty'
+        },
+        {
+          id: 't6',
+          name: 'Sky Blue Ceramic Mosaic',
+          price: '₹ 210 / sq.ft',
+          tag: 'Glass Mosaic',
+          bgColor: '#D4E0EB',
+          desc: 'Mesh-mounted ceramic glass mosaic tiles ideal for swimming pools, luxury spa walls, and kitchen backsplashes.',
+          dim: '300 x 300 mm Sheet',
+          finish: 'Gloss Glass',
+          water: '100% Impervious',
+          warranty: '12 Years Warranty'
+        },
+        {
+          id: 't7',
+          name: 'Emerald Vein Onyx Slab',
+          price: '₹ 240 / sq.ft',
+          tag: 'Translucent Slab',
+          img: 'assets/sea_pearl_luxury_suite_1785225385629.png',
+          desc: 'Backlit-compatible emerald green onyx slab tile for luxury bar counters, boutique hotel lobbies, and feature walls.',
+          dim: '1600 x 800 mm',
+          finish: 'Polished Crystal',
+          water: '< 0.02% Moisture',
+          warranty: '15 Years Warranty'
+        },
+        {
+          id: 't8',
+          name: 'Sandstone Heavy Duty Paver',
+          price: '₹ 110 / sq.ft',
+          tag: '20mm Heavy Duty',
+          bgColor: '#E2D5C3',
+          desc: '20mm thick porcelain paver engineered to withstand heavy vehicular loads, frost, and extreme outdoor weather.',
+          dim: '600 x 600 mm',
+          finish: 'Grip Texture R11',
+          water: '< 0.05% Absorption',
+          warranty: '20 Years Warranty'
+        }
+      ]
+    },
+    Sanitaryware: {
+      categoryName: 'Sanitaryware Gallery',
+      badgeText: 'BUILDSY · SANITARYWARE',
+      items: [
+        {
+          id: 's1',
+          name: 'Royal Matte Black Wall WC',
+          price: '₹ 18,500',
+          tag: 'Rimless Wall WC',
+          img: 'assets/bathware_sanitaryware_suite_1785225449404.png',
+          desc: 'Wall-hung rimless toilet bowl with antibacterial nano-glaze, soft-close slender seat, and dual flush 3L/4.5L efficiency.',
+          dim: '540 x 360 x 380 mm',
+          finish: 'Matte Charcoal Black',
+          water: 'Dual Flush Eco',
+          warranty: '10 Years Ceramic'
+        },
+        {
+          id: 's2',
+          name: 'Countertop Oval Vessel Basin',
+          price: '₹ 7,200',
+          tag: 'Tabletop Sink',
+          img: 'assets/media__1785225345889.png',
+          desc: 'Thin-edge ceramic vessel sink with anti-stain glaze designed for modern minimalist vanity counters.',
+          dim: '600 x 400 x 140 mm',
+          finish: 'Pure Ceramic White',
+          water: 'Easy Clean Coating',
+          warranty: '10 Years Ceramic'
+        },
+        {
+          id: 's3',
+          name: 'Alpine Gloss White Pedestal Sink',
+          price: '₹ 5,800',
+          tag: 'Free-Standing Sink',
+          bgColor: '#FAF8F5',
+          desc: 'Classic full pedestal basin with integrated tap hole overflow. Built with high-density vitreous china.',
+          dim: '580 x 460 x 850 mm',
+          finish: 'High Gloss White',
+          water: 'Stain Resistant',
+          warranty: '10 Years Ceramic'
+        },
+        {
+          id: 's4',
+          name: 'Warm Earth Commercial Urinal',
+          price: '₹ 9,400',
+          tag: 'Sensor Compatible',
+          bgColor: '#8C6A4A',
+          desc: 'Compact wall-mounted urinal with integrated concealed trap and water-saving electronic flushing nozzle.',
+          dim: '340 x 310 x 680 mm',
+          finish: 'Warm Sand Matte',
+          water: '0.8L Eco Flush',
+          warranty: '7 Years Ceramic'
+        },
+        {
+          id: 's5',
+          name: 'Concealed Cistern In-Wall Frame',
+          price: '₹ 8,900',
+          tag: 'Structural Tank',
+          bgColor: '#334155',
+          desc: 'Heavy-duty steel frame for wall-mounted WCs with sound-insulated anti-sweat flush tank and dual push plate.',
+          dim: '1120 x 500 x 120 mm',
+          finish: 'Powder Coated Steel',
+          water: 'Dual Volume Tank',
+          warranty: '15 Years Frame'
+        },
+        {
+          id: 's6',
+          name: 'Integrated Smart Bidet Suite',
+          price: '₹ 45,000',
+          tag: 'Smart Suite',
+          img: 'assets/bathware_sanitaryware_suite_1785225449404.png',
+          desc: 'Electronic smart toilet featuring heated seat, warm water oscillating nozzle, air dryer, auto flushing, and wireless remote control.',
+          dim: '680 x 390 x 470 mm',
+          finish: 'Glazed Porcelain',
+          water: 'Auto Flush 4.2L',
+          warranty: '5 Years Electrical'
+        }
+      ]
+    },
+    Bathware: {
+      categoryName: 'Bathware & Fixtures Gallery',
+      badgeText: 'BUILDSY · BATHWARE FIXTURES',
+      items: [
+        {
+          id: 'b1',
+          name: 'Matte Black Rainfall Shower Set',
+          price: '₹ 14,500',
+          tag: 'Thermostatic Shower',
+          img: 'assets/bathware_product_1.png',
+          desc: 'Complete shower system featuring 300x300mm overhead rain shower head, brass handset, and anti-scald thermostatic diverter.',
+          dim: '300 x 300 mm Head',
+          finish: 'Matte Black PVD',
+          water: 'Air-Injected Stream',
+          warranty: '12 Years Valve'
+        },
+        {
+          id: 'b2',
+          name: 'Rose Gold Brass Basin Mixer',
+          price: '₹ 6,800',
+          tag: 'Mono Basin Tap',
+          img: 'assets/sea_pearl_luxury_suite_1785225385629.png',
+          desc: 'Single-lever copper rose gold basin faucet with ceramic disc cartridge tested for 500,000 opening cycles.',
+          dim: 'Height 185 mm',
+          finish: 'Rose Gold PVD',
+          water: 'Neoperl Aerator',
+          warranty: '10 Years Finish'
+        },
+        {
+          id: 'b3',
+          name: 'Chrome Waterfall Tub Spout',
+          price: '₹ 4,200',
+          tag: 'Wall Mount Spout',
+          bgColor: '#94A3B8',
+          desc: 'Wide mouth waterfall bath spout forged from lead-free solid brass with multi-layer chrome electroplating.',
+          dim: 'Reach 160 mm',
+          finish: 'Mirror Chrome',
+          water: 'High Flow Rate',
+          warranty: '10 Years Chrome'
+        },
+        {
+          id: 'b4',
+          name: 'Brushed Nickel Accessories Set',
+          price: '₹ 2,900',
+          tag: '5-Piece Set',
+          bgColor: '#64748B',
+          desc: 'Coordinated set including towel bar, paper holder, robe hook, soap dish, and tumbler holder in SS304 steel.',
+          dim: 'Standard Wall Mount',
+          finish: 'Brushed Nickel',
+          water: 'Rustproof SS304',
+          warranty: '15 Years Warranty'
+        },
+        {
+          id: 'b5',
+          name: 'Freestanding Floor Bath Mixer',
+          price: '₹ 22,000',
+          tag: 'Floor Standing',
+          img: 'assets/bathware_product_1.png',
+          desc: 'Floor-mounted bathtub filler tap with high arc swivel spout and integrated handheld spray shower wand.',
+          dim: 'Height 1150 mm',
+          finish: 'Matte Black & Brass',
+          water: '25 L/min Flow',
+          warranty: '10 Years Warranty'
+        },
+        {
+          id: 'b6',
+          name: 'Concealed 3-Way Shower Diverter',
+          price: '₹ 8,400',
+          tag: 'Concealed Valve',
+          bgColor: '#475569',
+          desc: '3-inlet concealed diverter valve body with high-flow cartridge allowing simultaneous overhead and handset operation.',
+          dim: 'Standard 1/2" NPT',
+          finish: 'Forged Brass',
+          water: 'High Pressure Rated',
+          warranty: '15 Years Valve'
+        }
+      ]
+    },
+    Pipes: {
+      categoryName: 'Pipes & Fittings Gallery',
+      badgeText: 'BUILDSY · PIPES & FITTINGS',
+      items: [
+        {
+          id: 'p1',
+          name: 'Architectural CPVC Hot & Cold Line',
+          price: '₹ 320 / meter',
+          tag: 'SDR 11 CPVC',
+          img: 'assets/pipes_product_1.png',
+          desc: 'Chlorinated PVC plumbing pipe rated for continuous operating temperatures up to 93°C. Lead-free, non-corrosive, and fire retardant.',
+          dim: '1 Inch (32 mm)',
+          finish: 'Smooth Hydraulic',
+          water: 'Potable Water Safe',
+          warranty: '50 Years Life'
+        },
+        {
+          id: 'p2',
+          name: 'Heavy Drainage UPVC Soil Pipe',
+          price: '₹ 450 / meter',
+          tag: 'SWR Sewage Pipe',
+          bgColor: '#33594D',
+          desc: 'Heavy-duty soil & waste disposal pipe with rubber ring joint technology for 100% leak-proof underground installation.',
+          dim: '110 mm Outer Dia',
+          finish: 'UV Stabilized Grey',
+          water: 'SWR Drainage',
+          warranty: '30 Years Warranty'
+        },
+        {
+          id: 'p3',
+          name: 'Brass Threaded Elbow & Tees',
+          price: '₹ 180 / pc',
+          tag: 'Brass Insert Fitting',
+          img: 'assets/pipes_product_1.png',
+          desc: 'High-pressure brass threaded CPVC transition fittings for secure leak-proof connections to sanitary faucets.',
+          dim: '1/2" x 1/2" Thread',
+          finish: 'Machined Brass',
+          water: 'Rated 25 Bar Pressure',
+          warranty: '25 Years Warranty'
+        },
+        {
+          id: 'p4',
+          name: 'Flexible SS Braided Hose',
+          price: '₹ 290 / pc',
+          tag: 'Faucet Connector',
+          bgColor: '#CBD5E1',
+          desc: 'Flexible SS304 braided hose connector with non-toxic EPDM inner tube and solid brass chrome hex nuts.',
+          dim: '600 mm Length',
+          finish: 'Braided SS Wire',
+          water: 'High Temp 90°C',
+          warranty: '10 Years Warranty'
+        },
+        {
+          id: 'p5',
+          name: 'Full Port Industrial Ball Valve',
+          price: '₹ 650 / pc',
+          tag: 'Control Valve',
+          bgColor: '#334155',
+          desc: 'Heavy forged brass ball valve with vinyl handle sleeve, designed for main water supply line shut-off control.',
+          dim: '1 Inch Female NPT',
+          finish: 'Nickel Plated Brass',
+          water: 'PN32 Max Pressure',
+          warranty: '15 Years Valve'
+        },
+        {
+          id: 'p6',
+          name: 'PPR Thermal Fusion Hot Pipe',
+          price: '₹ 280 / meter',
+          tag: 'Heat Fusion PPR',
+          bgColor: '#4A7A6B',
+          desc: 'Polypropylene random copolymer pipe joined via heat socket fusion for seamless zero-leak joint integrity.',
+          dim: '25 mm Outer Dia',
+          finish: 'Green PPR',
+          water: 'PN20 Class',
+          warranty: '50 Years Life'
+        }
+      ]
+    },
+    Panels: {
+      categoryName: 'Wall Panels & Slats Gallery',
+      badgeText: 'BUILDSY · WALL PANELS',
+      items: [
+        {
+          id: 'pan1',
+          name: 'Fluted Acoustic Wood Panel',
+          price: '₹ 350 / sq.ft',
+          tag: 'Acoustic Slat',
+          img: 'assets/panels_product_1.png',
+          desc: 'Architectural acoustic slat wall paneling crafted with natural walnut wood veneer mounted on sound-dampening acoustic felt.',
+          dim: '2400 x 600 x 21 mm',
+          finish: 'Walnut & Black Felt',
+          water: 'Acoustic Class A',
+          warranty: '10 Years Warranty'
+        },
+        {
+          id: 'pan2',
+          name: 'Waterproof Louvered PVC Panel',
+          price: '₹ 180 / sq.ft',
+          tag: '100% Waterproof',
+          img: 'assets/media__1785225345889.png',
+          desc: 'Lightweight louvered PVC cladding panel resistant to water, humidity, and termites. Ideal for damp walls and TV backdrops.',
+          dim: '2900 x 160 x 12 mm',
+          finish: 'Charcoal Matte',
+          water: '100% Water Resistant',
+          warranty: '15 Years Warranty'
+        },
+        {
+          id: 'pan3',
+          name: 'Natural Fluted Oak Timber Slat',
+          price: '₹ 290 / sq.ft',
+          tag: 'Oak Wood Veneer',
+          bgColor: '#D6A47C',
+          desc: 'Warm oak timber slats providing tactile texture and architectural depth to modern bedroom feature walls.',
+          dim: '2700 x 120 mm',
+          finish: 'Natural Oak Oil',
+          water: 'Interior Grade',
+          warranty: '10 Years Warranty'
+        },
+        {
+          id: 'pan4',
+          name: 'Stone Texture Composite Panel',
+          price: '₹ 420 / sq.ft',
+          tag: '3D Faux Stone',
+          bgColor: '#94A3B8',
+          desc: 'High-density polyurethane 3D stone panel reproducing natural stacked ledge stone without heavy wall load.',
+          dim: '1200 x 600 mm',
+          finish: 'Slate Grey Texture',
+          water: 'Weatherproof',
+          warranty: '15 Years Warranty'
+        },
+        {
+          id: 'pan5',
+          name: 'Midnight Slate UV Exterior Board',
+          price: '₹ 210 / sq.ft',
+          tag: 'UV Exterior Board',
+          bgColor: '#1E293B',
+          desc: 'Heavy-duty fiber cement UV panel engineered for modern exterior building facade cladding and entryway soffits.',
+          dim: '2440 x 1220 x 8 mm',
+          finish: 'Deep Matte Slate',
+          water: 'Exterior Weatherproof',
+          warranty: '20 Years Warranty'
+        },
+        {
+          id: 'pan6',
+          name: 'Micro-Perforated Ceiling Slat',
+          price: '₹ 380 / sq.ft',
+          tag: 'Ceiling Slat',
+          img: 'assets/panels_product_1.png',
+          desc: 'Micro-perforated ceiling panels designed for ambient sound control in home theaters, executive offices, and luxury lounges.',
+          dim: '1200 x 600 mm',
+          finish: 'Acoustic White',
+          water: 'Flame Retardant',
+          warranty: '10 Years Warranty'
+        }
+      ]
+    }
+  };
+
+  const detailModal = document.getElementById('detailModal');
+  const btnCloseModal = document.getElementById('btnCloseModal');
+  const modalGalleryTitle = document.getElementById('modalGalleryTitle');
+  const modalCatTag = document.getElementById('modalCatTag');
+  const modalProductCount = document.getElementById('modalProductCount');
+  const modalSearchInput = document.getElementById('modalSearchInput');
+  const galleryGrid = document.getElementById('galleryGrid');
+
+  // Sidebar Elements
+  const sidebarProductImg = document.getElementById('sidebarProductImg');
+  const sidebarColorBox = document.getElementById('sidebarColorBox');
+  const sidebarBadge = document.getElementById('sidebarBadge');
+  const sidebarTitle = document.getElementById('sidebarTitle');
+  const sidebarPrice = document.getElementById('sidebarPrice');
+  const sidebarDesc = document.getElementById('sidebarDesc');
+  const specDim = document.getElementById('specDim');
+  const specFinish = document.getElementById('specFinish');
+  const specWater = document.getElementById('specWater');
+  const specWarranty = document.getElementById('specWarranty');
+  const btnRequestQuote = document.getElementById('btnRequestQuote');
+  const btnDownloadSpec = document.getElementById('btnDownloadSpec');
+
+  let currentCategory = 'Tiles';
+  let activeItemIndex = 0;
+
+  function renderGallery(catKey, filterQuery = '') {
+    const categoryData = GALLERY_DATA[catKey] || GALLERY_DATA.Tiles;
+    currentCategory = catKey;
+
+    modalGalleryTitle.textContent = categoryData.categoryName;
+    modalCatTag.textContent = categoryData.badgeText;
+
+    let items = categoryData.items;
+    if (filterQuery) {
+      const q = filterQuery.toLowerCase();
+      items = items.filter(item => item.name.toLowerCase().includes(q) || item.tag.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q));
+    }
+
+    modalProductCount.textContent = `${items.length} items available`;
+    galleryGrid.innerHTML = '';
+
+    if (items.length === 0) {
+      galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding: 40px; color:#64748B;">No products match your search filter.</div>';
+      return;
+    }
+
+    items.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = `gallery-item-card ${index === activeItemIndex ? 'active-selected' : ''}`;
+      
+      let thumbHtml = '';
+      if (item.img) {
+        thumbHtml = `<img src="${item.img}" class="card-img-thumb" alt="${item.name}">`;
+      } else {
+        thumbHtml = `<div class="card-color-thumb" style="background:${item.bgColor || '#3E6B8C'};">${item.tag}</div>`;
+      }
+
+      card.innerHTML = `
+        ${thumbHtml}
+        <h4 class="item-title">${item.name}</h4>
+        <span class="item-tag">${item.tag}</span>
+        <span class="item-price">${item.price}</span>
+      `;
+
+      card.addEventListener('click', () => {
+        selectGalleryItem(catKey, index);
+      });
+
+      galleryGrid.appendChild(card);
+    });
+
+    if (activeItemIndex >= items.length) {
+      activeItemIndex = 0;
+    }
+    if (items.length > 0) {
+      updateSidebarDetail(items[activeItemIndex]);
+    }
+  }
+
+  function selectGalleryItem(catKey, itemIndex) {
+    activeItemIndex = itemIndex;
+    const categoryData = GALLERY_DATA[catKey] || GALLERY_DATA.Tiles;
+    const item = categoryData.items[itemIndex];
+    
+    // Highlight active card
+    const cards = galleryGrid.querySelectorAll('.gallery-item-card');
+    cards.forEach((c, idx) => {
+      c.classList.toggle('active-selected', idx === itemIndex);
+    });
+
+    if (item) {
+      updateSidebarDetail(item);
+    }
+  }
+
+  function updateSidebarDetail(item) {
+    if (item.img) {
+      sidebarProductImg.src = item.img;
+      sidebarProductImg.style.display = 'block';
+      sidebarColorBox.style.display = 'none';
+    } else {
+      sidebarProductImg.style.display = 'none';
+      sidebarColorBox.style.display = 'flex';
+      sidebarColorBox.style.background = item.bgColor || '#3E6B8C';
+      sidebarColorBox.textContent = item.name;
+    }
+
+    sidebarBadge.textContent = item.tag;
+    sidebarTitle.textContent = item.name;
+    sidebarPrice.textContent = item.price;
+    sidebarDesc.textContent = item.desc;
+    specDim.textContent = item.dim || 'N/A';
+    specFinish.textContent = item.finish || 'N/A';
+    specWater.textContent = item.water || 'N/A';
+    specWarranty.textContent = item.warranty || 'N/A';
+  }
+
+  function openGalleryModal(catName) {
+    currentCategory = catName || 'Tiles';
+    activeItemIndex = 0;
+    modalSearchInput.value = '';
+    renderGallery(currentCategory);
+    detailModal.classList.add('active');
+  }
+
+  // Bind click handlers to carousel cards
+  cards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      const cat = card.dataset.cat || 'Tiles';
+      if (card.classList.contains('state-center') || e.target.closest('.swatch-box') || e.target.closest('.card-footer-link')) {
+        e.stopPropagation();
+        openGalleryModal(cat);
+      } else if (card.classList.contains('state-left')) {
+        updateCarousel(activeIndex - 1);
+        openGalleryModal(cat);
+      } else if (card.classList.contains('state-right')) {
+        updateCarousel(activeIndex + 1);
+        openGalleryModal(cat);
+      }
+    });
+  });
+
+  // Bind footer links and swatches explicitly
+  document.querySelectorAll('.card-footer-link, .swatch-box').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parentCard = el.closest('.carousel-card');
+      const cat = parentCard ? parentCard.dataset.cat : 'Tiles';
+      openGalleryModal(cat);
+    });
+  });
+
+  // Search input inside modal
+  modalSearchInput.addEventListener('input', (e) => {
+    renderGallery(currentCategory, e.target.value);
+  });
+
+  // Modal Close Listeners
+  btnCloseModal.addEventListener('click', () => {
+    detailModal.classList.remove('active');
+  });
+
+  detailModal.addEventListener('click', (e) => {
+    if (e.target === detailModal) {
+      detailModal.classList.remove('active');
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && detailModal.classList.contains('active')) {
+      detailModal.classList.remove('active');
+    }
+  });
+
+  btnRequestQuote.addEventListener('click', () => {
+    alert('Thank you! Quote request for "' + sidebarTitle.textContent + '" has been registered. Our Buildsy representative will reach out to you within 24 hours.');
+  });
+
+  btnDownloadSpec.addEventListener('click', () => {
+    alert('Downloading Technical Specification Sheet for "' + sidebarTitle.textContent + '"...');
+  });
+
+  // Main Page Search filter box
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', (e) => {
+    const val = e.target.value.toLowerCase().trim();
+    cards.forEach((card, i) => {
+      const catName = card.dataset.cat.toLowerCase();
+      if (val && !catName.includes(val)) {
+        card.style.opacity = '0.2';
+      } else {
+        card.style.opacity = '';
+      }
+    });
+  });
+
+  // Initialize
+  updateCarousel(0);
+</script>
+</body>
+</html>

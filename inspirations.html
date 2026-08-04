@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inspirations | Buildsy</title>
 <meta name="description" content="Browse premium inspiration images by Buildsy.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" type="image/png" href="public/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="gallery.css">
@@ -15,7 +17,10 @@
 
 <!-- Navbar -->
 <header class="navbar" id="navbar">
-  <a href="index.html" class="navbar-logo">Buildsy</a>
+  <a href="index.html" class="navbar-logo" style="display:inline-flex; align-items:center; gap:10px; text-decoration:none;">
+    <img src="logo.png" alt="Buildsy Logo" style="height:36px; width:auto; border-radius:6px;">
+    <span>Buildsy</span>
+  </a>
   <nav class="navbar-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="inspirations.html#tiles">Tiles</a>

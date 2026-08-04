@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspirations | Buildsy</title>
+<meta name="description" content="Browse premium inspiration images by Buildsy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <a href="buildsy-inspiration-gallery (2).html" class="navbar-logo">Buildsy</a>
+  <nav class="navbar-links" id="navLinks">
+    <a href="buildsy-inspiration-gallery (2).html">Home</a>
+    <a href="inspirations.html#tiles">Tiles</a>
+    <a href="inspirations.html#sanitaryware">Sanitaryware</a>
+    <a href="inspirations.html#bathware">Bathware</a>
+    <a href="inspirations.html#kitchen">Kitchen</a>
+    <a href="inspirations.html#panels">Panels</a>
+    <a href="inspirations.html#homedecor">Home Decor</a>
+  </nav>
+  <button class="navbar-cta" id="mobileMenuBtn" aria-label="Menu">
+    <span class="hamburger-icon">☰</span>
+    <span class="cta-text">Visit Store</span>
+  </button>
+</header>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<nav class="mobile-nav-drawer" id="mobileNavDrawer">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+  <div class="mobile-nav-links" id="mobileNavLinks"></div>
+</nav>
+
+<!-- Main Content -->
+<main class="gallery-main" id="galleryMain">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+    <a href="buildsy-inspiration-gallery (2).html" class="breadcrumb-link">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="inspirations.html" class="breadcrumb-link">Inspirations</a>
+    <span class="breadcrumb-sep" id="breadcrumbCatSep">›</span>
+    <span class="breadcrumb-current" id="breadcrumbCat"></span>
+  </nav>
+
+  <!-- Gallery Header -->
+  <section class="gallery-header" id="galleryHeader">
+    <h1 class="gallery-title font-serif" id="galleryTitle">Inspirations</h1>
+    <p class="gallery-count" id="galleryCount"></p>
+    <p class="gallery-desc" id="galleryDesc">Visualize your dream space with Buildsy — browse real-life inspirations</p>
+  </section>
+
+  <!-- Category Pills (shown on "all" view) -->
+  <div class="category-pills" id="categoryPills"></div>
+
+  <!-- Gallery Grid -->
+  <div class="gallery-grid" id="galleryGrid"></div>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <div class="empty-icon">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="14" width="60" height="52" rx="8" stroke="#CBD5E1" stroke-width="2.5"/><circle cx="30" cy="34" r="6" stroke="#CBD5E1" stroke-width="2"/><path d="M10 50l18-14 12 10 14-18 16 22" stroke="#CBD5E1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h3 class="font-serif">No inspirations available yet.</h3>
+    <p>Check back soon — we're curating beautiful spaces for this category.</p>
+  </div>
+
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+  <div class="lightbox-img-wrap">
+    <img class="lightbox-img" id="lightboxImg" alt="" loading="eager">
+  </div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Buildsy.in — Building Materials & Inspiration Platform. All rights reserved.</p>
+</footer>
+
+<script src="gallery.js"></script>
+</body>
+</html>

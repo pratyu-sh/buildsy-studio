@@ -6,56 +6,25 @@
 (function () {
   'use strict';
 
-  // ---------- Config ----------
-  const MANIFEST_URL = 'public/images/manifest.json';
-  const IMAGE_BASE = 'public/images';
-
-  const CATEGORY_META = {
-    tiles:        { label: 'Tiles',        tagline: 'Explore premium floor & wall tile inspirations' },
-    sanitaryware: { label: 'Sanitaryware', tagline: 'Modern basins, WCs & sanitary fixtures' },
-    bathware:     { label: 'Bathware',     tagline: 'Luxury showers, faucets & bath accessories' },
-    kitchen:      { label: 'Kitchen',      tagline: 'Beautiful modular kitchen design ideas' },
-    panels:       { label: 'Panels',       tagline: 'Elegant wall panels & decorative cladding' },
-    homedecor:    { label: 'Home Decor',   tagline: 'Stunning interiors & living space inspirations' },
-  };
-
-  // ---------- DOM refs ----------
-  const galleryGrid    = document.getElementById('galleryGrid');
-  const galleryTitle   = document.getElementById('galleryTitle');
-  const galleryCount   = document.getElementById('galleryCount');
-  const galleryDesc    = document.getElementById('galleryDesc');
-  const breadcrumbCat  = document.getElementById('breadcrumbCat');
-  const breadcrumbSep  = document.getElementById('breadcrumbCatSep');
-  const categoryPills  = document.getElementById('categoryPills');
-  const emptyState     = document.getElementById('emptyState');
-  const navLinks       = document.getElementById('navLinks');
-
-  // Lightbox
-  const lightbox       = document.getElementById('lightbox');
-  const lbImg          = document.getElementById('lightboxImg');
-  const lbCaption      = document.getElementById('lightboxCaption');
-  const lbCounter      = document.getElementById('lightboxCounter');
-  const lbClose        = document.getElementById('lightboxClose');
-  const lbPrev         = document.getElementById('lightboxPrev');
-  const lbNext         = document.getElementById('lightboxNext');
-
-  // Mobile nav
-  const mobileMenuBtn   = document.getElementById('mobileMenuBtn');
-  const mobileOverlay   = document.getElementById('mobileNavOverlay');
-  const mobileDrawer    = document.getElementById('mobileNavDrawer');
-  const mobileClose     = document.getElementById('mobileNavClose');
-  const mobileNavLinks  = document.getElementById('mobileNavLinks');
-
-  let manifest = {};
-  let currentImages = [];
-  let lightboxIndex = 0;
-  let currentCategory = null;
+  let imageBasePath = 'public/images';
 
   // ---------- Init ----------
   async function init() {
     try {
-      const res = await fetch(MANIFEST_URL);
-      manifest = await res.json();
+      let res = await fetch('public/images/manifest.json');
+      if (res.ok) {
+        imageBasePath = 'public/images';
+      } else {
+        res = await fetch('images/manifest.json');
+        if (res.ok) {
+          imageBasePath = 'images';
+        }
+      }
+      if (res.ok) {
+        manifest = await res.json();
+      } else {
+        manifest = {};
+      }
     } catch (e) {
       console.error('Failed to load manifest:', e);
       manifest = {};

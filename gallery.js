@@ -50,6 +50,66 @@
   let currentImages = [];
   let lightboxIndex = 0;
   let currentCategory = null;
+  const BAG_STORAGE_KEY = 'buildsy-showroom-wishlist';
+  let bag = loadBag();
+
+  function loadBag() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(BAG_STORAGE_KEY) || '[]');
+      return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveBag() {
+    localStorage.setItem(BAG_STORAGE_KEY, JSON.stringify(bag));
+    renderBag();
+  }
+
+  function renderBag() {
+    const count = bag.length;
+    const countEl = document.getElementById('galleryBagCount');
+    const itemsEl = document.getElementById('galleryBagItems');
+    const emptyEl = document.getElementById('galleryBagEmpty');
+    const footerEl = document.getElementById('galleryBagFooter');
+    const summaryEl = document.getElementById('galleryBagSummary');
+    if (!countEl || !itemsEl) return;
+    countEl.textContent = count;
+    itemsEl.innerHTML = '';
+    emptyEl.hidden = bag.length > 0;
+    footerEl.hidden = bag.length === 0;
+    summaryEl.textContent = count + ' Product' + (count === 1 ? '' : 's') + ' Saved';
+    bag.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'gallery-bag-row';
+      const visual = item.img ? '<img src="' + escapeAttribute(item.img) + '" alt="' + escapeAttribute(item.name) + '">' : '<div class="gallery-bag-color" style="background:' + escapeAttribute(item.bgColor || '#3E6B8C') + '">' + escapeHtml(item.tag || item.name) + '</div>';
+      row.innerHTML = visual + '<div><h3>' + escapeHtml(item.name) + '</h3><p>' + escapeHtml(item.dim || item.tag || item.category) + '</p><span class="gallery-saved-label">Saved for quote discussion</span></div><button type="button" data-remove-bag-id="' + escapeAttribute(item.id) + '" aria-label="Remove ' + escapeAttribute(item.name) + ' from wishlist">Remove</button>';
+      itemsEl.appendChild(row);
+    });
+  }
+
+  function addToBag(item) {
+    const itemId = getWishlistId(item);
+    const existing = bag.find(entry => entry.id === itemId);
+    if (existing) return false;
+    bag.push({ id: itemId, name: item.name, category: item.category, img: item.src, tag: item.category, quantity: 1 });
+    saveBag();
+    return true;
+  }
+
+  function removeFromWishlist(item) {
+    bag = bag.filter(entry => entry.id !== getWishlistId(item));
+    saveBag();
+  }
+
+  function getWishlistId(item) {
+    return item.id || item.category + '::' + item.name;
+  }
+
+  function escapeAttribute(value) {
+    return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
 
   // ---------- Init ----------
   async function init() {
@@ -70,6 +130,8 @@
 
     buildMobileNav();
     setupMobileMenu();
+    setupGalleryBag();
+    renderBag();
 
     // Route based on hash
     handleRoute();
@@ -213,6 +275,30 @@
       card.appendChild(imgEl);
       card.appendChild(overlay);
 
+      const actions = document.createElement('div');
+      actions.className = 'gallery-card-actions';
+      const addButton = document.createElement('button');
+      addButton.className = 'gallery-add-button';
+      addButton.type = 'button';
+      const isSaved = bag.some(entry => entry.id === getWishlistId(img));
+      addButton.textContent = isSaved ? '♥' : '♡';
+      addButton.classList.toggle('saved', isSaved);
+      addButton.setAttribute('aria-pressed', String(isSaved));
+      addButton.setAttribute('aria-label', (isSaved ? 'Remove ' : 'Add ') + img.category + ' image ' + String(idx + 1).padStart(2, '0') + ' ' + (isSaved ? 'from' : 'to') + ' wishlist');
+      addButton.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const saved = bag.some(entry => entry.id === getWishlistId(img));
+        if (saved) removeFromWishlist(img);
+        else addToBag(img);
+        const nowSaved = bag.some(entry => entry.id === getWishlistId(img));
+        addButton.textContent = nowSaved ? '♥' : '♡';
+        addButton.classList.toggle('saved', nowSaved);
+        addButton.setAttribute('aria-pressed', String(nowSaved));
+        addButton.setAttribute('aria-label', (nowSaved ? 'Remove ' : 'Add ') + img.category + ' image ' + String(idx + 1).padStart(2, '0') + ' ' + (nowSaved ? 'from' : 'to') + ' wishlist');
+      });
+      actions.appendChild(addButton);
+      card.appendChild(actions);
+
       card.addEventListener('click', function () { openLightbox(idx); });
       card.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); }
@@ -321,6 +407,43 @@
     });
     if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
     if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+  }
+
+  function setupGalleryBag() {
+    const toggle = document.getElementById('galleryBagToggle');
+    const overlay = document.getElementById('galleryBagOverlay');
+    const close = document.getElementById('galleryBagClose');
+    const items = document.getElementById('galleryBagItems');
+    const update = document.getElementById('updateWishlist');
+    const share = document.getElementById('shareWishlist');
+    if (!toggle || !overlay) return;
+    toggle.addEventListener('click', function () {
+      renderBag();
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      close.focus();
+    });
+    close.addEventListener('click', function () { overlay.classList.remove('active'); overlay.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; });
+    overlay.addEventListener('click', function (event) { if (event.target === overlay) close.click(); });
+    items.addEventListener('click', function (event) {
+      const id = event.target.getAttribute('data-remove-bag-id');
+      if (!id) return;
+      bag = bag.filter(item => item.id !== id);
+      saveBag();
+    });
+    if (update) update.addEventListener('click', function () { close.click(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    if (share) share.addEventListener('click', async function () {
+      const shareText = 'My Buildsy wishlist: ' + bag.map(item => item.name).join(', ');
+      try {
+        await navigator.clipboard.writeText(shareText);
+        share.textContent = 'Wishlist copied';
+        setTimeout(function () { share.textContent = 'Share wishlist'; }, 1400);
+      } catch (error) {
+        share.textContent = 'Copy unavailable';
+        setTimeout(function () { share.textContent = 'Share wishlist'; }, 1400);
+      }
+    });
   }
 
   function openMobileMenu() {

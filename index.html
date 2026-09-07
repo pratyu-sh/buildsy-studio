@@ -11,14 +11,14 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #10263F;
     --navy-dark: #0B1B2D;
     --navy-soft: #1B3A5C;
-    --blue-accent: #2563EB;
-    --blue-hover: #1D4ED8;
+    --blue-accent: #7692FF;
+    --blue-hover: #5F78E6;
     --copper: #B8794F;
     --copper-soft: #D6A47C;
     --cream-bg: #F4EFEA;
@@ -769,6 +769,624 @@
       border-top: 1px solid #E2E8F0;
     }
   }
+
+  /* ---------- Home Landing Page Refresh ---------- */
+  :root {
+    --ink-deep: #080616;
+    --forest: #080616;
+    --forest-dark: #080616;
+    --sage: #f4f0dc;
+    --paper: #f7f5f0;
+    --orange: var(--blue-accent);
+    --line: rgba(22, 37, 31, 0.14);
+  }
+  body { background: var(--paper); color: var(--ink-deep); }
+  .navbar {
+    background: #1F150C;
+    padding: 18px clamp(20px, 5vw, 72px);
+    box-shadow: none;
+  }
+  .navbar-logo { font-size: 28px; }
+  .navbar-links { gap: clamp(14px, 2.2vw, 34px); }
+  .navbar-links a { color: rgba(255,255,255,.68); }
+  .navbar-links a.active { color: #fff; }
+  .navbar-cta {
+    background: var(--orange);
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+  }
+  .navbar-cta:hover { background: var(--blue-hover); box-shadow: none; }
+  main.main-content {
+    display: block;
+    max-width: 1440px;
+    padding: 0 clamp(20px, 5vw, 72px) 72px;
+  }
+  .landing-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.03fr) minmax(400px, .97fr);
+    gap: clamp(36px, 7vw, 110px);
+    align-items: center;
+    min-height: min(720px, calc(100vh - 72px));
+    padding: 72px 0 82px;
+  }
+  .hero-copy { max-width: 650px; }
+  .eyebrow, .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .eyebrow::before, .section-kicker::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+  }
+  .hero-copy h1 {
+    color: var(--forest-dark);
+    font-size: clamp(48px, 6.5vw, 88px);
+    line-height: .98;
+    margin: 22px 0 24px;
+    max-width: 620px;
+  }
+  .hero-copy h1 em { color: var(--orange); font-weight: 400; }
+  .hero-copy > p {
+    color: #5c6962;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 510px;
+    margin: 0 0 32px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .primary-action, .outline-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 21px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .primary-action { background: var(--forest); color: #fff; }
+  .primary-action:hover { background: var(--forest-dark); transform: translateY(-2px); }
+  .outline-action { color: var(--forest); border: 1px solid var(--line); }
+  .outline-action:hover { border-color: var(--forest); transform: translateY(-2px); }
+  .hero-note { display: flex; align-items: center; gap: 10px; color: #718077; font-size: 12px; margin-top: 24px; }
+  .hero-note strong { color: var(--forest); font-size: 17px; }
+  .hero-visual { position: relative; min-height: 480px; }
+  .hero-image { width: 79%; height: 470px; object-fit: cover; display: block; margin-left: auto; border-radius: 2px; }
+  .hero-image-label {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    background: #fff;
+    width: min(245px, 52%);
+    padding: 20px;
+    box-shadow: 0 16px 40px rgba(22,37,31,.13);
+  }
+  .hero-image-label span { display: block; color: var(--orange); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 8px; }
+  .hero-image-label strong { color: var(--forest-dark); font-family: 'Fraunces', serif; font-size: 21px; line-height: 1.1; }
+  .hero-index { position: absolute; right: 5%; top: 26px; color: rgba(8,6,22,.24); font-size: 12px; letter-spacing: .14em; writing-mode: vertical-rl; }
+  .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); padding: 24px 0; gap: 20px; }
+  .trust-item { display: flex; align-items: center; justify-content: center; gap: 13px; border-right: 1px solid var(--line); }
+  .trust-item:last-child { border-right: 0; }
+  .trust-item b { color: var(--forest); font-family: 'Fraunces', serif; font-size: 24px; }
+  .trust-item span { color: #65736b; font-size: 12px; line-height: 1.35; max-width: 130px; }
+  .explore-section { padding: 110px 0 96px; }
+  .section-heading { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 32px; }
+  .section-heading h2 { color: var(--forest-dark); font-size: clamp(34px, 4vw, 54px); line-height: 1.05; max-width: 470px; margin: 15px 0 0; }
+  .section-heading p { color: #65736b; line-height: 1.55; max-width: 300px; margin: 0 0 3px; }
+  .category-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+  .category-tile { position: relative; min-height: 310px; overflow: hidden; color: #fff; grid-column: span 3; background: var(--forest); }
+  .category-tile:first-child, .category-tile:last-child { grid-column: span 6; min-height: 265px; }
+  .category-tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+  .category-tile:hover img { transform: scale(1.05); }
+  .category-tile::after { content: ''; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(10,31,23,.82)); }
+  .category-tile-content { position: absolute; left: 22px; right: 22px; bottom: 20px; z-index: 2; display: flex; justify-content: space-between; align-items: end; }
+  .category-tile h3 { font-size: 26px; margin: 0 0 5px; }
+  .category-tile p { color: rgba(255,255,255,.72); font-size: 11px; margin: 0; }
+  .tile-arrow { font-size: 24px; line-height: 1; }
+  .process-section { background: var(--sage); margin: 0 calc(clamp(20px, 5vw, 72px) * -1); padding: 82px clamp(20px, 5vw, 72px); display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
+  .process-section h2 { color: var(--forest-dark); font-size: clamp(36px, 4vw, 56px); line-height: 1.02; margin: 16px 0; }
+  .process-section > div > p { color: #5e7065; line-height: 1.6; max-width: 360px; }
+  .process-list { display: grid; gap: 18px; }
+  .process-step { display: grid; grid-template-columns: 42px 1fr; gap: 18px; align-items: start; padding-bottom: 18px; border-bottom: 1px solid rgba(8,6,22,.18); }
+  .process-step:last-child { border: 0; padding-bottom: 0; }
+  .process-number { width: 34px; height: 34px; border: 1px solid var(--forest); border-radius: 50%; display: grid; place-items: center; color: var(--forest); font-size: 12px; font-weight: 700; }
+  .process-step h3 { color: var(--forest-dark); font-size: 22px; margin: 0 0 5px; }
+  .process-step p { color: #65736b; font-size: 13px; line-height: 1.5; margin: 0; }
+  .closing-cta { text-align: center; padding: 110px 20px 30px; }
+  .closing-cta h2 { color: var(--forest-dark); font-size: clamp(36px, 5vw, 64px); line-height: 1; margin: 16px auto 25px; max-width: 650px; }
+  .closing-cta p { color: #65736b; margin: 0 auto 28px; }
+  footer.footer { background: var(--forest-dark); padding: 28px; color: rgba(255,255,255,.58); }
+  @media (max-width: 900px) {
+    .landing-hero { grid-template-columns: 1fr; min-height: auto; padding: 70px 0 64px; }
+    .hero-visual { min-height: 400px; }
+    .hero-image { height: 390px; }
+    .category-tile, .category-tile:first-child, .category-tile:last-child { grid-column: span 6; min-height: 260px; }
+    .process-section { grid-template-columns: 1fr; gap: 38px; }
+  }
+  @media (max-width: 600px) {
+    .navbar { padding: 14px 20px; }
+    .navbar-cta { padding: 10px 13px; font-size: 12px; }
+    .landing-hero { padding-top: 52px; }
+    .hero-copy h1 { font-size: 52px; }
+    .hero-copy > p { font-size: 16px; }
+    .hero-visual, .hero-image { min-height: 330px; height: 330px; }
+    .trust-strip { grid-template-columns: 1fr; gap: 16px; }
+    .trust-item { justify-content: flex-start; border-right: 0; }
+    .explore-section { padding: 72px 0; }
+    .section-heading { display: block; }
+    .section-heading p { margin-top: 18px; }
+    .category-tile, .category-tile:first-child, .category-tile:last-child { grid-column: span 12; min-height: 220px; }
+    .process-section { padding-top: 64px; padding-bottom: 64px; }
+    .closing-cta { padding-top: 76px; }
+  }
+
+  /* ---------- Cinematic Hero ---------- */
+  .prisma-page {
+    position: relative;
+    width: 100dvw;
+    height: 100vh;
+    min-height: 100svh;
+    margin: 0 calc(50% - 50dvw);
+    overflow: hidden;
+    border-radius: 26px;
+    background: #171b18;
+    color: var(--forest-dark);
+    isolation: isolate;
+  }
+  body > .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-110%);
+    transition: transform .35s ease;
+    display: flex;
+  }
+  body.home-scrolled > .navbar { transform: translateY(0); }
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -5;
+    background-image: url('public/tiles/tiles (10).jpeg');
+    background-size: cover;
+    background-position: center;
+    transform-origin: center;
+    animation: hero-settle 1.8s cubic-bezier(.16,1,.3,1) both;
+  }
+  .hero-vignette, .hero-gradient { position: absolute; inset: 0; pointer-events: none; }
+  .hero-vignette { z-index: -4; background: radial-gradient(circle at 50% 42%, transparent 16%, rgba(0,0,0,.16) 65%, rgba(0,0,0,.65) 100%); }
+  .hero-gradient { z-index: -3; background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.03) 44%, rgba(0,0,0,.72)); }
+  .prisma-page::after { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(8,6,22,.64), transparent 58%, rgba(8,6,22,.1)); pointer-events: none; }
+  .prisma-page.hero-bright .hero-vignette { opacity: .62; }
+  .prisma-page.hero-bright .hero-gradient { opacity: .48; }
+  @keyframes hero-settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+  .prisma-page .control-panel {
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    z-index: 20;
+    display: flex;
+    gap: 4px;
+    height: 44px;
+    padding: 0 8px;
+    align-items: center;
+    border-radius: 7px;
+    background: rgba(245,245,238,.92);
+    backdrop-filter: blur(12px);
+  }
+  .prisma-page .control-panel button {
+    width: 29px;
+    height: 29px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #182019;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .prisma-page .control-panel button:hover { background: rgba(0,0,0,.1); }
+  .prisma-page .hero-nav {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 20;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(710px, 62vw);
+    height: 43px;
+    padding: 0 30px;
+    border-radius: 0 0 24px 24px;
+    background: rgba(8,12,10,.92);
+  }
+  .prisma-page .hero-nav a { color: #ddd9bd; font-family: Georgia, serif; font-size: 15px; text-decoration: none; }
+  .prisma-page .hero-nav a:hover { color: #fff; }
+  .hero-content { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+  .prisma-page .hero-dot { position: absolute; left: 18.5%; bottom: 28.5%; width: 42px; height: 42px; border-radius: 50%; background: #f4f0dc; animation: dot-in .6s .6s both; }
+  @keyframes dot-in { from { transform: scale(0); } to { transform: scale(1); } }
+  .prisma-page .hero-title {
+    position: absolute;
+    left: 3.2%;
+    bottom: calc(-4% + 10px);
+    margin: 0;
+    color: #f4f0dc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(88px, 15.5vw, 240px);
+    font-weight: 500;
+    letter-spacing: -.075em;
+    line-height: .85;
+    white-space: nowrap;
+    animation: title-in 1.1s .2s cubic-bezier(.16,1,.3,1) both;
+  }
+  @keyframes title-in { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+  .prisma-page .hero-info { position: absolute; right: 5.5%; bottom: 6%; width: min(360px, 28vw); pointer-events: auto; animation: info-in .8s .8s both; }
+  @keyframes info-in { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .prisma-page .hero-info p { margin: 0 0 24px; color: rgba(0,0,0,.68); font-size: 15px; line-height: 1.45; }
+  .join-button { position: relative; top: -5px; display: inline-flex; align-items: center; gap: 17px; height: 56px; padding: 0 6px 0 24px; border-radius: 999px; background: #f4f0dc; color: #080b09; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .join-button .arrow { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: #080b09; color: #f4f0dc; font-size: 20px; transition: transform .25s ease; }
+  .join-button:hover .arrow { transform: rotate(45deg); }
+  .scroll-indicator { position: absolute; right: 25px; bottom: 25px; z-index: 6; display: flex; align-items: center; gap: 10px; color: #f4f0dc; font-size: 9px; letter-spacing: .15em; opacity: .75; }
+  .scroll-line { width: 35px; height: 1px; background: currentColor; }
+  @media (max-width: 700px) {
+    .prisma-page { width: calc(100% + 40px); height: 100svh; min-height: 100svh; margin: 0 -20px; border-radius: 0; }
+    .prisma-page .hero-nav { top: 8px; left: auto; right: 12px; transform: none; width: calc(100% - 142px); height: 42px; padding: 0 18px; border-radius: 25px; }
+    .prisma-page .hero-nav a { display: none; }
+    .prisma-page .hero-nav::after { content: 'Buidsy studio'; margin: auto; font: 16px Georgia, serif; }
+    .prisma-page .control-panel { top: 12px; left: 8px; }
+    .prisma-page .hero-title { left: 5%; bottom: calc(17% + 10px); font-size: clamp(66px, 22vw, 130px); white-space: normal; }
+    .prisma-page .hero-dot { left: 24%; bottom: 34%; width: 28px; height: 28px; }
+    .prisma-page .hero-info { left: 5%; right: 5%; bottom: 1%; width: auto; }
+    .prisma-page .hero-info p { display: none; }
+    .scroll-indicator { display: none; }
+  }
+  body:has(.prisma-page) { overflow-x: hidden; }
+
+  /* ---------- Smooth Scroll ---------- */
+  html.lenis,
+  html.lenis body { height: auto; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+
+  /* ---------- Bag / Quote Flow ---------- */
+  .bag-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 21px;
+    height: 21px;
+    margin-left: 7px;
+    padding: 0 5px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.18);
+    color: #fff;
+    font-size: 11px;
+  }
+  .bag-step-indicator {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: .08em;
+  }
+  .bag-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2400;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(rgba(8,6,22,.28), rgba(8,6,22,.58)), url('public/tiles/tiles (10).jpeg') center / cover;
+    backdrop-filter: blur(8px);
+  }
+  .bag-overlay.active { display: flex; }
+  .bag-window {
+    width: min(700px, 100%);
+    max-height: min(760px, 92vh);
+    overflow: hidden;
+    background: var(--paper);
+    border-radius: 24px;
+    box-shadow: 0 30px 90px rgba(10, 25, 45, .32);
+    animation: bag-in .25s ease both;
+  }
+  @keyframes bag-in { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .bag-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px 18px;
+    background: #fff;
+  }
+  .bag-header .gallery-modal-title { color: #111; }
+  .bag-header .modal-close-btn { background: #FAFAFA; color: #111; }
+  .bag-header .modal-close-btn:hover { background: #F0F0F0; }
+  .bag-view, .details-view {
+    max-height: calc(min(760px, 92vh) - 87px);
+    overflow-y: auto;
+    padding: 26px 28px 28px;
+  }
+  .contact-details-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 34px; align-items: start; }
+  .contact-details-intro { padding: 6px 12px 0 0; }
+  .contact-kicker { color: var(--copper); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .contact-details-intro h3 { margin: 14px 0; color: #111; font-size: clamp(30px, 4vw, 42px); line-height: 1; }
+  .contact-details-intro > p { margin: 0; color: #666; font-size: 13px; line-height: 1.55; }
+  .contact-points { display: grid; gap: 14px; margin: 34px 0 0; }
+  .contact-points div { padding-top: 12px; border-top: 1px solid #E5E5E5; }
+  .contact-points dt { color: #888; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  .contact-points dd { margin: 4px 0 0; color: #222; font-size: 12px; }
+  .bag-intro {
+    margin: 0 0 20px;
+    color: var(--slate);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .bag-items { display: grid; gap: 12px; }
+  .bag-item {
+    display: grid;
+    grid-template-columns: 76px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--stone);
+  }
+  .bag-item-image,
+  .bag-item-color {
+    width: 76px;
+    height: 76px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #E2E8F0;
+  }
+  .bag-item-color { display: grid; place-items: center; padding: 8px; color: rgba(255,255,255,.9); font-size: 10px; text-align: center; }
+  .bag-item h3 { margin: 0 0 4px; color: var(--navy); font-size: 15px; letter-spacing: -.02em; }
+  .bag-item p { margin: 0; color: var(--slate); font-size: 12px; line-height: 1.4; }
+  .bag-item-controls { display: flex; align-items: center; gap: 8px; margin-top: 9px; }
+  .quantity-control { display: inline-flex; align-items: center; border: 1px solid #CBD5E1; border-radius: 8px; background: #fff; overflow: hidden; }
+  .quantity-control button { width: 28px; height: 28px; border: 0; background: transparent; color: var(--navy); cursor: pointer; font-size: 16px; }
+  .quantity-control button:hover { background: #F1F5F9; }
+  .quantity-control span { min-width: 27px; text-align: center; color: var(--navy); font-size: 12px; font-weight: 700; }
+  .bag-remove { border: 0; background: transparent; color: var(--slate); cursor: pointer; font-size: 12px; padding: 4px; }
+  .bag-remove:hover { color: var(--copper); }
+  .bag-item-price { align-self: start; color: var(--copper); font-size: 13px; font-weight: 700; white-space: nowrap; }
+  .bag-footer { padding-top: 22px; }
+  .bag-footer > strong { display: block; margin-bottom: 14px; color: var(--navy); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .bag-actions { display: flex; gap: 10px; }
+  .bag-actions > * { flex: 1; }
+  .bag-actions .btn-primary-cta,
+  .whatsapp-cta { background: #171717; border-radius: 12px; box-shadow: none; }
+  .bag-actions .btn-primary-cta:hover,
+  .whatsapp-cta:hover { background: #000; box-shadow: none; }
+  .bag-actions .btn-secondary-action,
+  #backToBag { border-radius: 12px; background: #F7F7F7; border-color: #E6E6E6; }
+  .bag-empty { padding: 34px 10px 12px; text-align: center; }
+  .bag-empty h3 { margin: 0 0 8px; color: var(--navy); font-size: 23px; }
+  .bag-empty p { margin: 0 auto 20px; max-width: 360px; color: var(--slate); font-size: 14px; line-height: 1.5; }
+  .quote-form { display: grid; gap: 8px; }
+  .quote-form label { margin-top: 8px; color: var(--navy); font-size: 13px; font-weight: 700; }
+  .quote-form label span { color: var(--slate); font-weight: 400; }
+  .quote-form input { width: 100%; padding: 12px 14px; border: 1px solid #CBD5E1; border-radius: 10px; background: #fff; color: var(--ink); font: inherit; outline: none; }
+  .contact-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .quote-form textarea { width: 100%; min-height: 82px; resize: vertical; padding: 12px 14px; border: 1px solid #CBD5E1; border-radius: 10px; background: #fff; color: var(--ink); font: inherit; outline: none; }
+  .quote-form textarea:focus { border-color: var(--blue-accent); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+  .quote-form input:focus { border-color: var(--blue-accent); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+  .quote-form input.invalid { border-color: var(--copper); }
+  .form-error { min-height: 15px; color: var(--copper); font-size: 12px; }
+  .whatsapp-copy { margin: 18px 0 2px; padding: 14px; border-left: 3px solid var(--copper); background: rgba(214,164,124,.12); color: var(--slate); font-size: 13px; line-height: 1.5; }
+  .whatsapp-copy strong { color: var(--navy); }
+  .whatsapp-cta { margin-top: 4px; }
+  .wishlist-action { width: 52px; min-height: 52px; padding: 0; border-radius: 50%; font-size: 28px; line-height: 1; }
+  #backToBag { margin-top: 10px; }
+  @media (max-width: 600px) {
+    .bag-overlay { align-items: flex-end; padding: 0; }
+    .bag-window { max-height: 94vh; border-radius: 18px 18px 0 0; }
+    .bag-view, .details-view { padding: 20px; }
+    .bag-header { padding: 18px 20px; }
+    .bag-item { grid-template-columns: 58px 1fr; gap: 10px; }
+    .bag-item-image, .bag-item-color { width: 58px; height: 58px; }
+    .bag-item-price { grid-column: 2; }
+    .bag-actions { flex-direction: column-reverse; }
+    .bag-count { margin-left: 0; }
+    .contact-details-grid { grid-template-columns: 1fr; gap: 28px; }
+    .contact-details-intro { padding-right: 0; }
+    .contact-points { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; }
+    .contact-field-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  /* ---------- Hero-led Landing System ---------- */
+  body {
+    font-family: 'DM Sans', Arial, sans-serif;
+  }
+  h1, h2, h3, h4, .font-serif,
+  .navbar-logo,
+  .trust-item b,
+  .hero-image-label strong {
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    letter-spacing: -0.04em;
+  }
+  .prisma-page .hero-title {
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    letter-spacing: -0.075em;
+  }
+  .trust-strip {
+    position: relative;
+    z-index: 2;
+    padding: 30px 0;
+    background: var(--paper);
+    min-height: 104px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .trust-item b {
+    font-weight: 600;
+    color: var(--forest-dark);
+  }
+  .category-marquee {
+    width: calc(100% + 2 * clamp(20px, 5vw, 72px));
+    margin-left: calc(clamp(20px, 5vw, 72px) * -1);
+    margin-top: 15px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .category-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: buildsy-marquee 28s linear infinite;
+  }
+  .category-marquee:hover .category-marquee-track { animation-play-state: paused; }
+  .category-marquee-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .category-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 30px;
+    color: var(--forest-dark);
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 500;
+    letter-spacing: -.04em;
+    white-space: nowrap;
+  }
+  @keyframes buildsy-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .explore-section {
+    padding: 128px 0 116px;
+  }
+  .section-heading {
+    margin-bottom: 42px;
+  }
+  .section-heading h2,
+  .process-section h2,
+  .closing-cta h2 {
+    font-weight: 600;
+  }
+  .section-heading p {
+    font-size: 14px;
+  }
+  .category-grid {
+    gap: 16px;
+  }
+  .category-tile {
+    border-radius: 14px;
+    min-height: 330px;
+    box-shadow: 0 16px 36px rgba(18, 50, 39, .1);
+  }
+  .category-tile:first-child,
+  .category-tile:last-child {
+    min-height: 286px;
+  }
+  .category-tile-content {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+  .category-tile h3 {
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .tile-arrow {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,.48);
+    border-radius: 50%;
+    font-size: 18px;
+    transition: transform .25s ease, background .25s ease;
+  }
+  .category-tile:hover .tile-arrow {
+    background: var(--orange);
+    border-color: var(--orange);
+    transform: rotate(45deg);
+  }
+  .process-section {
+    border-radius: 18px;
+    background: #1F150C;
+    padding-top: 94px;
+    padding-bottom: 94px;
+  }
+  .process-section h2,
+  .process-section > div > p,
+  .process-step h3,
+  .process-step p {
+    color: var(--paper);
+  }
+  .process-section > div > p,
+  .process-step p {
+    color: rgba(247,245,240,.68);
+  }
+  .process-step {
+    border-color: rgba(247,245,240,.2);
+  }
+  .process-number {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .process-section .primary-action {
+    background: var(--orange);
+    color: var(--forest-dark);
+  }
+  .process-section .primary-action:hover {
+    background: var(--paper);
+  }
+  .process-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .process-section .outline-action {
+    color: var(--paper);
+    border-color: rgba(247,245,240,.38);
+  }
+  .process-section .outline-action:hover {
+    border-color: var(--paper);
+    background: rgba(247,245,240,.08);
+  }
+  .closing-cta {
+    margin: 0 calc(clamp(20px, 5vw, 72px) * -1);
+    padding: 120px clamp(20px, 5vw, 72px) 38px;
+    background: var(--sage);
+  }
+  .closing-cta h2 {
+    max-width: 760px;
+  }
+  @media (max-width: 600px) {
+    .explore-section {
+      padding: 86px 0 76px;
+    }
+    .process-section {
+      border-radius: 12px;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+    .closing-cta {
+      padding-top: 82px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -785,128 +1403,92 @@
     <a class="nav-link" data-cat-index="4" href="inspirations.html#panels">Panels</a>
     <a class="nav-link" href="inspirations.html#homedecor">Home Decor</a>
   </nav>
-  <button class="navbar-cta">Visit Store</button>
 </header>
 
 <!-- Main Application Section -->
 <main class="main-content">
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <h1 class="font-serif">Inspiration Gallery</h1>
-    <p>Visualize your dream space with Buildsy — browse real-life inspirations</p>
-  </section>
+  <section class="prisma-page" id="story" aria-labelledby="hero-title">
+    <div class="hero-background" role="img" aria-label="Premium tile and interior materials showroom detail"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-gradient"></div>
 
-  <!-- Search Bar -->
-  <div class="search-box-wrap">
-    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" class="search-input" id="searchInput" placeholder="Search inspirations...">
-  </div>
+    <nav class="hero-nav" aria-label="Home sections">
+      <a href="#story">Our story</a>
+      <a href="#collections">Collections</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="inspirations.html">Explore</a>
+    </nav>
 
-  <!-- Category Pills Bar -->
-  <div class="filter-pills-bar" id="pillsBar">
-    <button class="filter-pill active" data-cat-index="0">All</button>
-    <button class="filter-pill" data-cat-index="0">Tiles</button>
-    <button class="filter-pill" data-cat-index="1">Sanitaryware</button>
-    <button class="filter-pill" data-cat-index="2">Bathware</button>
-    <button class="filter-pill" data-cat-index="3">Pipes</button>
-    <button class="filter-pill" data-cat-index="4">Panels</button>
-  </div>
-
-  <!-- Carousel Stage -->
-  <div class="carousel-stage">
-    <button class="carousel-nav-btn prev" id="btnPrevCarousel" aria-label="Previous Slide">‹</button>
-    
-    <div class="carousel-track" id="carouselTrack">
-      
-      <!-- Category Card 0: Tiles (Center Pop-up Grid) -->
-      <div class="carousel-card state-center" data-index="0" data-cat="Tiles">
-        <h3 class="card-header-title font-serif">Tiles</h3>
-        <div class="swatch-grid-2x3">
-          <div class="swatch-box" style="background:#EBE6DD;" title="Cream Ivory Tile"></div>
-          <div class="swatch-box" style="background:#D4E0EB;" title="Sky Ceramic Tile"></div>
-          <div class="swatch-box" style="background:#3E6B8C;" title="Ocean Blue Vitrified"></div>
-          <div class="swatch-box" style="background:#E2D5C3;" title="Warm Sand Tile"></div>
-          <div class="swatch-box" style="background:#1B2A3A;" title="Charcoal Slate Tile"></div>
-          <div class="swatch-box" style="background:#C4AA90;" title="Terracotta Tile"></div>
-        </div>
-        <a class="card-footer-link" href="inspirations.html#tiles" data-cat="Tiles">View all inspirations →</a>
+    <div class="hero-content">
+      <div class="hero-dot" aria-hidden="true"></div>
+      <h1 class="hero-title" id="hero-title">Buildsy <span class="asterisk">*</span><br>studio</h1>
+      <div class="hero-info">
+        <p>A considered collection of tiles, sanitaryware and bathroom details for spaces with a point of view.</p>
+        <a href="inspirations.html" class="join-button"><span>Explore the collection</span><span class="arrow">↗</span></a>
       </div>
-
-      <!-- Category Card 1: Sanitaryware -->
-      <div class="carousel-card state-right" data-index="1" data-cat="Sanitaryware">
-        <h3 class="card-header-title font-serif">Sanitaryware</h3>
-        <div class="swatch-grid-2x3">
-          <div class="swatch-box" style="background:#FAF8F5;" title="Matte Ceramic WC"></div>
-          <div class="swatch-box" style="background:#E2E8F0;" title="Tabletop Sink"></div>
-          <div class="swatch-box" style="background:#CBD5E1;" title="Gloss Basin"></div>
-          <div class="swatch-box" style="background:#8C6A4A;" title="Warm Earth Urinal"></div>
-          <div class="swatch-box" style="background:#F1F5F9;" title="Wall-Mounted WC"></div>
-          <div class="swatch-box" style="background:#334155;" title="Dark Accent Sink"></div>
-        </div>
-        <a class="card-footer-link" href="inspirations.html#sanitaryware" data-cat="Sanitaryware">View all inspirations →</a>
-      </div>
-
-      <!-- Category Card 2: Bathware -->
-      <div class="carousel-card state-far-right" data-index="2" data-cat="Bathware">
-        <h3 class="card-header-title font-serif">Bathware</h3>
-        <div class="swatch-grid-2x3">
-          <div class="swatch-box" style="background:#B8794F;" title="Copper Brass Faucet"></div>
-          <div class="swatch-box" style="background:#D6A47C;" title="Rose Gold Shower"></div>
-          <div class="swatch-box" style="background:#475569;" title="Matte Black Mixer"></div>
-          <div class="swatch-box" style="background:#94A3B8;" title="Chrome Rainhead"></div>
-          <div class="swatch-box" style="background:#F8FAFC;" title="Polished Tray"></div>
-          <div class="swatch-box" style="background:#64748B;" title="Brushed Steel Towel Bar"></div>
-        </div>
-        <a class="card-footer-link" href="inspirations.html#bathware" data-cat="Bathware">View all inspirations →</a>
-      </div>
-
-      <!-- Category Card 3: Pipes -->
-      <div class="carousel-card state-far-left" data-index="3" data-cat="Pipes">
-        <h3 class="card-header-title font-serif">Pipes</h3>
-        <div class="swatch-grid-2x3">
-          <div class="swatch-box" style="background:#4A7A6B;" title="CPVC Hot Line"></div>
-          <div class="swatch-box" style="background:#33594D;" title="Heavy Drainage PVC"></div>
-          <div class="swatch-box" style="background:#64748B;" title="Steel Couplers"></div>
-          <div class="swatch-box" style="background:#94A3B8;" title="Elbow Joint"></div>
-          <div class="swatch-box" style="background:#CBD5E1;" title="Flex Hose"></div>
-          <div class="swatch-box" style="background:#334155;" title="Pressure Valve"></div>
-        </div>
-        <a class="card-footer-link" href="inspirations.html#kitchen" data-cat="Kitchen">View all inspirations →</a>
-      </div>
-
-      <!-- Category Card 4: Panels -->
-      <div class="carousel-card state-left" data-index="4" data-cat="Panels">
-        <h3 class="card-header-title font-serif">Panels</h3>
-        <div class="swatch-grid-2x3">
-          <div class="swatch-box" style="background:#6B5B8C;" title="Louvered PVC Panel"></div>
-          <div class="swatch-box" style="background:#4E3F6B;" title="Waterproof Wall Board"></div>
-          <div class="swatch-box" style="background:#D6A47C;" title="Fluted Oak Panel"></div>
-          <div class="swatch-box" style="background:#E2E8F0;" title="Acoustic Slat"></div>
-          <div class="swatch-box" style="background:#94A3B8;" title="Stone Pattern Panel"></div>
-          <div class="swatch-box" style="background:#1E293B;" title="Midnight Charcoal Slat"></div>
-        </div>
-        <a class="card-footer-link" href="inspirations.html#panels" data-cat="Panels">View all inspirations →</a>
-      </div>
-
     </div>
 
-    <button class="carousel-nav-btn next" id="btnNextCarousel" aria-label="Next Slide">›</button>
-  </div>
+    <div class="scroll-indicator" aria-hidden="true"><span>Scroll</span><span class="scroll-line"></span></div>
+  </section>
 
-  <!-- Pagination Dots -->
-  <div class="pagination-dots" id="dotsTrack">
-    <span class="pag-dot active" data-index="0"></span>
-    <span class="pag-dot" data-index="1"></span>
-    <span class="pag-dot" data-index="2"></span>
-    <span class="pag-dot" data-index="3"></span>
-    <span class="pag-dot" data-index="4"></span>
-  </div>
+  <section class="trust-strip" aria-label="Buildsy highlights">
+    <div class="trust-item"><b>06</b><span>material worlds, one place to explore</span></div>
+    <div class="trust-item"><b>Real</b><span>spaces and applications, not empty samples</span></div>
+    <div class="trust-item"><b>∞</b><span>ways to make a space feel unmistakably yours</span></div>
+  </section>
+
+  <section class="category-marquee" aria-label="Buildsy material categories">
+    <div class="category-marquee-track">
+      <div class="category-marquee-group">
+        <a class="category-marquee-item" href="inspirations.html#tiles">Tiles</a>
+        <a class="category-marquee-item" href="inspirations.html#sanitaryware">Sanitaryware</a>
+        <a class="category-marquee-item" href="inspirations.html#bathware">Bathware</a>
+        <a class="category-marquee-item" href="inspirations.html#kitchen">Kitchen</a>
+        <a class="category-marquee-item" href="inspirations.html#panels">Panels</a>
+        <a class="category-marquee-item" href="inspirations.html#homedecor">Home Decor</a>
+      </div>
+      <div class="category-marquee-group" aria-hidden="true">
+        <a class="category-marquee-item" href="inspirations.html#tiles">Tiles</a>
+        <a class="category-marquee-item" href="inspirations.html#sanitaryware">Sanitaryware</a>
+        <a class="category-marquee-item" href="inspirations.html#bathware">Bathware</a>
+        <a class="category-marquee-item" href="inspirations.html#kitchen">Kitchen</a>
+        <a class="category-marquee-item" href="inspirations.html#panels">Panels</a>
+        <a class="category-marquee-item" href="inspirations.html#homedecor">Home Decor</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="explore-section" id="collections">
+    <div class="section-heading">
+      <div><span class="section-kicker">Start with a feeling</span><h2>Ideas that give your project direction.</h2></div>
+      <p>From the first saved image to the final finish, build a point of view you can act on.</p>
+    </div>
+    <div class="category-grid">
+      <a class="category-tile" href="inspirations.html#tiles"><img src="public/tiles/tiles (10).jpeg" alt="Tile inspiration"><div class="category-tile-content"><div><h3 class="font-serif">Tiles</h3><p>Texture, rhythm, atmosphere</p></div><span class="tile-arrow">↗</span></div></a>
+      <a class="category-tile" href="inspirations.html#sanitaryware"><img src="public/sanitaryware/sanitary (2).jpeg" alt="Sanitaryware inspiration"><div class="category-tile-content"><div><h3 class="font-serif">Sanitaryware</h3><p>Quietly essential forms</p></div><span class="tile-arrow">↗</span></div></a>
+      <a class="category-tile" href="inspirations.html#bathware"><img src="public/bathware/WhatsApp Image 2026-05-12 at 22.37.45 (2).jpeg" alt="Bathware inspiration"><div class="category-tile-content"><div><h3 class="font-serif">Bathware</h3><p>The ritual, refined</p></div><span class="tile-arrow">↗</span></div></a>
+      <a class="category-tile" href="inspirations.html#kitchen"><img src="public/kitchen/Kitchen Before.jpeg" alt="Kitchen inspiration"><div class="category-tile-content"><div><h3 class="font-serif">Kitchen</h3><p>Made for daily living</p></div><span class="tile-arrow">↗</span></div></a>
+      <a class="category-tile" href="inspirations.html#panels"><img src="public/panels/panels (2).jpeg" alt="Wall panel inspiration"><div class="category-tile-content"><div><h3 class="font-serif">Panels</h3><p>Depth on every surface</p></div><span class="tile-arrow">↗</span></div></a>
+      <a class="category-tile" href="inspirations.html#homedecor"><img src="public/homedecor/homedecor.jpeg" alt="Home decor inspiration"><div class="category-tile-content"><div><h3 class="font-serif">Home Decor</h3><p>The details that settle in</p></div><span class="tile-arrow">↗</span></div></a>
+    </div>
+  </section>
+
+  <section class="process-section" id="how-it-works">
+    <div><span class="section-kicker">How it works</span><h2>From your vision to a space you love.</h2><p>Building or renovating shouldn't feel complicated. At <strong>Buildsy</strong>, we make finding the right products simple — from the first idea to the final selection.</p><div class="process-actions"><a class="primary-action" href="inspirations.html">Explore Products&nbsp; ↗</a><a class="outline-action" href="mailto:hello@buildsy.in">Talk to an Expert&nbsp; ↗</a></div></div>
+    <div class="process-list" id="process">
+      <div class="process-step"><span class="process-number">01</span><div><h3 class="font-serif">Share your vision</h3><p><strong>Tell us about your space.</strong> Whether it's a new home, bathroom renovation, kitchen upgrade, or commercial project, share your requirements with our team.</p></div></div>
+      <div class="process-step"><span class="process-number">02</span><div><h3 class="font-serif">Explore your options</h3><p><strong>Find products that fit your style.</strong> Explore our curated range of tiles, sanitaryware, bath fittings, faucets, pipes, and accessories — selected for quality, design, and performance.</p></div></div>
+      <div class="process-step"><span class="process-number">03</span><div><h3 class="font-serif">Get expert guidance</h3><p><strong>Make every choice with confidence.</strong> Our experts help you compare options, understand specifications, and choose products that work for your space, needs, and budget.</p></div></div>
+      <div class="process-step"><span class="process-number">04</span><div><h3 class="font-serif">Finalize &amp; order</h3><p><strong>Everything sorted, without the hassle.</strong> Once you've made your selection, we'll help you finalize your order with transparent pricing and dependable service.</p></div></div>
+      <div class="process-step"><span class="process-number">05</span><div><h3 class="font-serif">Build your space</h3><p><strong>Now, bring your vision to life.</strong> Get the products you need and start creating a space that's beautiful, functional, and built to last.</p></div></div>
+    </div>
+  </section>
+
+  <section class="closing-cta"><span class="section-kicker">Your next room starts here</span><h2 class="font-serif">Good spaces begin with a good point of view.</h2><p>Explore the Buildsy inspiration gallery and find yours.</p><a class="primary-action" href="inspirations.html">Open the inspiration gallery&nbsp; ↗</a></section>
 </main>
 
 <!-- Footer -->
-<footer class="footer">
-  <p>© 2026 Buildsy.in — Building Materials & Inspiration Platform. All rights reserved.</p>
-</footer>
+<footer class="footer"><p>© 2026 Buildsy.in — Building Materials & Inspiration Platform. All rights reserved.</p></footer>
 
 <!-- Scrollable & Clickable Product Gallery Modal Overlay -->
 <div class="modal-overlay" id="detailModal">
@@ -969,7 +1551,7 @@
           </div>
 
           <div class="sidebar-actions">
-            <button class="btn-primary-cta" id="btnRequestQuote">Request Specifications & Quote</button>
+            <button class="btn-primary-cta wishlist-action" id="btnRequestQuote" aria-label="Add product to wishlist" title="Add to wishlist">♡</button>
             <button class="btn-secondary-action" id="btnDownloadSpec">Download Datasheet 📥</button>
           </div>
         </div>
@@ -978,6 +1560,76 @@
     </div>
   </div>
 </div>
+
+<!-- Wishlist and WhatsApp quote flow -->
+<div class="bag-overlay" id="bagOverlay" role="dialog" aria-modal="true" aria-labelledby="bagTitle" aria-hidden="true">
+  <div class="bag-window">
+    <div class="bag-header">
+      <div>
+        <div class="bag-step-indicator"><span id="bagStepCurrent">01</span><span>/</span><span>02</span></div>
+        <h2 class="gallery-modal-title" id="bagTitle">Your Wishlist</h2>
+      </div>
+      <button class="modal-close-btn" id="bagClose" aria-label="Close your bag">✕</button>
+    </div>
+    <div class="bag-view" id="bagView">
+      <p class="bag-intro">Products you've saved from the Buildsy showroom.</p>
+      <div class="bag-items" id="bagItems"></div>
+      <div class="bag-empty" id="bagEmpty" hidden>
+        <h3>Your Wishlist Is Empty</h3>
+        <p>Explore our showroom and save products you'd like to discuss with our team.</p>
+          <button class="btn-primary-cta" id="emptyBagExplore">Explore Products&nbsp; ↗</button>
+      </div>
+      <div class="bag-footer" id="bagFooter">
+        <strong id="bagSummary">0 Products Saved</strong>
+        <div class="bag-actions">
+          <button class="btn-secondary-action" id="continueExploring">Continue Exploring</button>
+          <button class="btn-primary-cta" id="proceedToDetails">Get a Quote on WhatsApp</button>
+        </div>
+      </div>
+    </div>
+    <div class="details-view" id="detailsView" hidden>
+      <div class="contact-details-grid">
+        <div class="contact-details-intro">
+          <span class="contact-kicker">Buildsy showroom</span>
+          <h3>Get in touch</h3>
+          <p>Tell us a little about yourself and your project. Our team will help with pricing, availability, design options, and the next steps.</p>
+          <dl class="contact-points">
+            <div><dt>Selection</dt><dd><span id="contactSelectionCount">0</span> saved product<span id="contactSelectionPlural">s</span></dd></div>
+            <div><dt>Response</dt><dd>Directly on WhatsApp</dd></div>
+            <div><dt>Next step</dt><dd>Quote, design and availability</dd></div>
+          </dl>
+        </div>
+        <form class="quote-form" id="quoteForm" novalidate>
+          <div class="contact-field-row">
+            <div><label for="customerName">Your Name</label><input id="customerName" name="name" type="text" placeholder="Enter your name" autocomplete="name" required><span class="form-error" id="nameError"></span></div>
+            <div><label for="customerPhone">Phone Number</label><input id="customerPhone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" autocomplete="tel" required><span class="form-error" id="phoneError"></span></div>
+          </div>
+          <label for="projectLocation">Project Location <span>(optional)</span></label>
+          <input id="projectLocation" name="location" type="text" placeholder="City / Area" autocomplete="address-level2">
+          <label for="projectMessage">Message <span>(optional)</span></label>
+          <textarea id="projectMessage" name="message" placeholder="Tell us what you are building..."></textarea>
+          <p class="whatsapp-copy"><strong>Get a quote on WhatsApp</strong><br>Your saved products and details will be sent to the Buildsy team for a focused conversation.</p>
+          <span class="form-error" id="whatsappError"></span>
+          <button class="btn-primary-cta whatsapp-cta" type="submit">Get My Quote&nbsp; →</button>
+          <button class="btn-secondary-action" id="backToBag" type="button">Back to Wishlist</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.Lenis) {
+    window.buildsyLenis = new Lenis({
+      autoRaf: true,
+      anchors: true,
+      lerp: 0.09,
+      smoothWheel: true,
+      wheelMultiplier: 0.9
+    });
+  }
+</script>
 
 <script>
   // ---------- Carousel Logic & Animations ----------
@@ -992,6 +1644,7 @@
   const totalCards = cards.length;
 
   function updateCarousel(newIndex) {
+    if (!totalCards) return;
     activeIndex = (newIndex + totalCards) % totalCards;
 
     cards.forEach((card, i) => {
@@ -1026,8 +1679,8 @@
     });
   }
 
-  btnPrev.addEventListener('click', () => updateCarousel(activeIndex - 1));
-  btnNext.addEventListener('click', () => updateCarousel(activeIndex + 1));
+  if (btnPrev) btnPrev.addEventListener('click', () => updateCarousel(activeIndex - 1));
+  if (btnNext) btnNext.addEventListener('click', () => updateCarousel(activeIndex + 1));
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
@@ -1492,8 +2145,192 @@
   const btnRequestQuote = document.getElementById('btnRequestQuote');
   const btnDownloadSpec = document.getElementById('btnDownloadSpec');
 
+  const bagToggle = document.getElementById('bagToggle');
+  const bagCount = document.getElementById('bagCount');
+  const bagOverlay = document.getElementById('bagOverlay');
+  const bagClose = document.getElementById('bagClose');
+  const bagItems = document.getElementById('bagItems');
+  const bagEmpty = document.getElementById('bagEmpty');
+  const bagFooter = document.getElementById('bagFooter');
+  const bagSummary = document.getElementById('bagSummary');
+  const bagTitle = document.getElementById('bagTitle');
+  const bagStepCurrent = document.getElementById('bagStepCurrent');
+  const continueExploring = document.getElementById('continueExploring');
+  const emptyBagExplore = document.getElementById('emptyBagExplore');
+  const proceedToDetails = document.getElementById('proceedToDetails');
+  const bagView = document.getElementById('bagView');
+  const detailsView = document.getElementById('detailsView');
+  const backToBag = document.getElementById('backToBag');
+  const quoteForm = document.getElementById('quoteForm');
+  const customerName = document.getElementById('customerName');
+  const customerPhone = document.getElementById('customerPhone');
+  const projectLocation = document.getElementById('projectLocation');
+  const projectMessage = document.getElementById('projectMessage');
+  const contactSelectionCount = document.getElementById('contactSelectionCount');
+  const contactSelectionPlural = document.getElementById('contactSelectionPlural');
+  const nameError = document.getElementById('nameError');
+  const phoneError = document.getElementById('phoneError');
+  const whatsappError = document.getElementById('whatsappError');
+
+  // Configure the business WhatsApp number here when it is provided by Buildsy.
+  const BUILDSY_WHATSAPP_NUMBER = '919663658377';
+  const BAG_STORAGE_KEY = 'buildsy-showroom-wishlist';
+
   let currentCategory = 'Tiles';
   let activeItemIndex = 0;
+  let bag = loadBag();
+
+  function loadBag() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(BAG_STORAGE_KEY) || '[]');
+      return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveBag() {
+    localStorage.setItem(BAG_STORAGE_KEY, JSON.stringify(bag));
+    renderBag();
+  }
+
+  function bagQuantity() {
+    return bag.reduce((total, item) => total + item.quantity, 0);
+  }
+
+  function trackBagEvent(name, detail) {
+    if (typeof window.buildsyAnalytics === 'function') window.buildsyAnalytics(name, detail);
+    window.dispatchEvent(new CustomEvent(name, { detail: detail || {} }));
+  }
+
+  function addToBag(category, item) {
+    const existing = bag.find(entry => entry.id === item.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      bag.push({
+        id: item.id,
+        category: category,
+        name: item.name,
+        price: item.price || '',
+        tag: item.tag || '',
+        img: item.img || '',
+        bgColor: item.bgColor || '#3E6B8C',
+        dim: item.dim || '',
+        finish: item.finish || '',
+        quantity: 1
+      });
+    }
+    saveBag();
+    trackBagEvent('product_added_to_bag', { id: item.id, quantity: existing ? existing.quantity : 1 });
+    btnRequestQuote.textContent = '♥';
+    setTimeout(() => { btnRequestQuote.textContent = '♡'; }, 1200);
+  }
+
+  function renderBag() {
+    const count = bagQuantity();
+    if (bagCount) {
+      bagCount.textContent = String(count);
+      bagCount.setAttribute('aria-label', count + ' products selected');
+    }
+    bagItems.innerHTML = '';
+    bagEmpty.hidden = bag.length > 0;
+    bagFooter.hidden = bag.length === 0;
+    bagSummary.textContent = count + ' Product' + (count === 1 ? '' : 's') + ' Selected';
+
+    bag.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'bag-item';
+      const visual = item.img
+        ? '<img class="bag-item-image" src="' + escapeAttribute(item.img) + '" alt="' + escapeAttribute(item.name) + '">'
+        : '<div class="bag-item-color" style="background:' + escapeAttribute(item.bgColor) + '">' + escapeHtml(item.tag || item.name) + '</div>';
+      row.innerHTML = visual +
+        '<div><h3>' + escapeHtml(item.name) + '</h3>' +
+        '<p>' + escapeHtml(item.dim || item.tag || item.category) + '</p>' +
+        '<div class="bag-item-controls"><div class="quantity-control" aria-label="Quantity for ' + escapeAttribute(item.name) + '">' +
+        '<button type="button" data-bag-action="decrease" data-bag-id="' + escapeAttribute(item.id) + '" aria-label="Decrease quantity">−</button>' +
+        '<span>' + item.quantity + '</span>' +
+        '<button type="button" data-bag-action="increase" data-bag-id="' + escapeAttribute(item.id) + '" aria-label="Increase quantity">+</button></div>' +
+        '<button type="button" class="bag-remove" data-bag-action="remove" data-bag-id="' + escapeAttribute(item.id) + '">Remove</button></div></div>' +
+        (item.price ? '<span class="bag-item-price">' + escapeHtml(item.price) + '</span>' : '');
+      bagItems.appendChild(row);
+    });
+  }
+
+  function updateBagItem(id, action) {
+    const item = bag.find(entry => entry.id === id);
+    if (!item) return;
+    if (action === 'increase') item.quantity += 1;
+    if (action === 'decrease') item.quantity = Math.max(1, item.quantity - 1);
+    if (action === 'remove') {
+      bag = bag.filter(entry => entry.id !== id);
+      trackBagEvent('product_removed_from_bag', { id: id });
+    }
+    saveBag();
+  }
+
+  function openBag() {
+    renderBag();
+    bagView.hidden = false;
+    detailsView.hidden = true;
+    bagTitle.textContent = 'Wishlist';
+    bagStepCurrent.textContent = '01';
+    bagOverlay.classList.add('active');
+    bagOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    trackBagEvent('bag_viewed', { count: bagQuantity() });
+    bagClose.focus();
+  }
+
+  function closeBag() {
+    bagOverlay.classList.remove('active');
+    bagOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (new URLSearchParams(window.location.search).get('quote') === '1') {
+      window.history.replaceState({}, document.title, 'index.html');
+    }
+  }
+
+  function showDetails() {
+    if (!bag.length) return;
+    bagView.hidden = true;
+    detailsView.hidden = false;
+    bagTitle.textContent = 'Contact details';
+    bagStepCurrent.textContent = '02';
+    contactSelectionCount.textContent = bag.length;
+    contactSelectionPlural.textContent = bag.length === 1 ? '' : 's';
+    trackBagEvent('bag_proceeded', { count: bagQuantity() });
+    customerName.focus();
+  }
+
+  function setFormError(input, error, message) {
+    input.classList.toggle('invalid', Boolean(message));
+    error.textContent = message || '';
+  }
+
+  function buildWhatsAppMessage() {
+    const lines = ['Hi Buildsy 👋', '', "I'm interested in the following products from your showroom:", ''];
+    bag.forEach((item, index) => {
+      lines.push((index + 1) + '. ' + item.name);
+      if (item.dim) lines.push('Size: ' + item.dim);
+      if (item.finish) lines.push('Finish: ' + item.finish);
+      lines.push('Quantity: ' + item.quantity, '');
+    });
+    lines.push('Customer Name: ' + customerName.value.trim());
+    lines.push('Phone: ' + customerPhone.value.trim());
+    if (projectLocation.value.trim()) lines.push('Project Location: ' + projectLocation.value.trim());
+    if (projectMessage.value.trim()) lines.push('Message: ' + projectMessage.value.trim());
+    lines.push('', "I'd like to get a quote and discuss pricing, availability, design options and delivery.", '', 'Thank you.');
+    return lines.join('\n');
+  }
+
+  function escapeAttribute(value) {
+    return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function escapeHtml(value) {
+    return escapeAttribute(value).replace(/&#39;/g, '&#39;');
+  }
 
   function renderGallery(catKey, filterQuery = '') {
     const categoryData = GALLERY_DATA[catKey] || GALLERY_DATA.Tiles;
@@ -1638,36 +2475,135 @@
     }
   });
 
+  if (bagToggle) bagToggle.addEventListener('click', openBag);
+  bagClose.addEventListener('click', closeBag);
+  bagOverlay.addEventListener('click', (e) => {
+    if (e.target === bagOverlay) closeBag();
+  });
+  bagItems.addEventListener('click', (e) => {
+    const action = e.target.dataset.bagAction;
+    const id = e.target.dataset.bagId;
+    if (action && id) updateBagItem(id, action);
+  });
+  continueExploring.addEventListener('click', closeBag);
+  emptyBagExplore.addEventListener('click', () => {
+    closeBag();
+    document.querySelector('.prisma-page').scrollIntoView({ behavior: 'smooth' });
+  });
+  proceedToDetails.addEventListener('click', showDetails);
+  backToBag.addEventListener('click', () => {
+    detailsView.hidden = true;
+    bagView.hidden = false;
+    bagTitle.textContent = 'Wishlist';
+    bagStepCurrent.textContent = '01';
+  });
+
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && detailModal.classList.contains('active')) {
       detailModal.classList.remove('active');
     }
+    if (e.key === 'Escape' && bagOverlay.classList.contains('active')) closeBag();
   });
 
   btnRequestQuote.addEventListener('click', () => {
-    alert('Thank you! Quote request for "' + sidebarTitle.textContent + '" has been registered. Our Buildsy representative will reach out to you within 24 hours.');
+    const item = (GALLERY_DATA[currentCategory] || GALLERY_DATA.Tiles).items[activeItemIndex];
+    if (item) addToBag(currentCategory, item);
+  });
+
+  quoteForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    setFormError(customerName, nameError, customerName.value.trim() ? '' : 'Please enter your name.');
+    const phoneDigits = customerPhone.value.replace(/\D/g, '');
+    const validPhone = /^(?:91)?[6-9]\d{9}$/.test(phoneDigits);
+    setFormError(customerPhone, phoneError, validPhone ? '' : 'Enter a valid Indian phone number.');
+    setFormError(quoteForm, whatsappError, '');
+    if (!customerName.value.trim() || !validPhone) return;
+    if (!BUILDSY_WHATSAPP_NUMBER) {
+      whatsappError.textContent = 'WhatsApp is not configured yet. Add the Buildsy business number in the page configuration.';
+      return;
+    }
+    trackBagEvent('customer_details_submitted', { count: bagQuantity() });
+    const number = BUILDSY_WHATSAPP_NUMBER.replace(/\D/g, '');
+    const url = 'https://wa.me/' + number + '?text=' + encodeURIComponent(buildWhatsAppMessage());
+    trackBagEvent('whatsapp_quote_clicked', { count: bagQuantity() });
+    window.open(url, '_blank', 'noopener');
+    localStorage.removeItem(BAG_STORAGE_KEY);
+    window.location.replace('index.html');
   });
 
   btnDownloadSpec.addEventListener('click', () => {
     alert('Downloading Technical Specification Sheet for "' + sidebarTitle.textContent + '"...');
   });
 
-  // Main Page Search filter box
-  const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', (e) => {
-    const val = e.target.value.toLowerCase().trim();
-    cards.forEach((card, i) => {
-      const catName = card.dataset.cat.toLowerCase();
-      if (val && !catName.includes(val)) {
-        card.style.opacity = '0.2';
-      } else {
-        card.style.opacity = '';
+  // Cinematic hero controls
+  const prismaHero = document.querySelector('.prisma-page');
+  const heroFullscreen = document.getElementById('heroFullscreen');
+  const heroContrast = document.getElementById('heroContrast');
+  const heroReset = document.getElementById('heroReset');
+
+  if (heroFullscreen) {
+    heroFullscreen.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else if (prismaHero && prismaHero.requestFullscreen) {
+        prismaHero.requestFullscreen();
       }
     });
-  });
+  }
+  if (heroContrast) {
+    heroContrast.addEventListener('click', () => {
+      prismaHero.classList.toggle('hero-bright');
+    });
+  }
+  if (heroReset) {
+    heroReset.addEventListener('click', () => {
+      prismaHero.classList.remove('hero-bright');
+      const background = prismaHero.querySelector('.hero-background');
+      background.style.animation = 'none';
+      void background.offsetWidth;
+      background.style.animation = '';
+    });
+  }
+
+  const homeNavbar = document.querySelector('body > .navbar');
+  if (homeNavbar && prismaHero) {
+    const updateHomeNavbar = () => {
+      document.body.classList.toggle('home-scrolled', window.scrollY >= prismaHero.offsetHeight - 80);
+    };
+    window.addEventListener('scroll', updateHomeNavbar, { passive: true });
+    updateHomeNavbar();
+  }
+
+  // Main Page Search filter box
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase().trim();
+      cards.forEach((card) => {
+        const catName = card.dataset.cat.toLowerCase();
+        card.style.opacity = val && !catName.includes(val) ? '0.2' : '';
+      });
+    });
+  }
 
   // Initialize
   updateCarousel(0);
+  renderBag();
+  if (new URLSearchParams(window.location.search).get('quote') === '1' && bag.length) {
+    openBag();
+    showDetails();
+  }
+</script>
+<script>
+  (() => {
+    const hero = document.querySelector('.prisma-page');
+    const navbar = document.querySelector('body > .navbar');
+    if (!hero || !navbar) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle('home-scrolled', !entry.isIntersecting);
+    }, { threshold: 0.08 });
+    observer.observe(hero);
+  })();
 </script>
 </body>
 </html>

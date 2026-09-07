@@ -11,8 +11,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="gallery.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gallery.css?v=3">
 </head>
 <body>
 
@@ -28,7 +28,10 @@
     <a href="inspirations.html#panels">Panels</a>
     <a href="inspirations.html#homedecor">Home Decor</a>
   </nav>
-  <button class="navbar-cta" id="mobileMenuBtn" aria-label="Menu">
+  <button class="navbar-cta gallery-bag-toggle" id="galleryBagToggle" aria-label="Open your wishlist">
+    <span class="cta-text">Wishlist</span><span class="gallery-bag-count" id="galleryBagCount">0</span>
+  </button>
+  <button class="navbar-cta gallery-menu-toggle" id="mobileMenuBtn" aria-label="Menu">
     <span class="hamburger-icon">☰</span>
     <span class="cta-text">Visit Store</span>
   </button>
@@ -40,6 +43,23 @@
   <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
   <div class="mobile-nav-links" id="mobileNavLinks"></div>
 </nav>
+
+<!-- Shared showroom wishlist -->
+<div class="gallery-bag-overlay" id="galleryBagOverlay" role="dialog" aria-modal="true" aria-labelledby="galleryBagTitle" aria-hidden="true">
+  <div class="gallery-bag-window">
+    <div class="gallery-bag-header">
+      <h2 id="galleryBagTitle">Wishlist</h2>
+      <button class="modal-close-btn" id="galleryBagClose" aria-label="Close your wishlist">✕</button>
+    </div>
+    <div class="gallery-bag-content">
+      <p>Products you've saved from the Buildsy showroom.</p>
+      <div id="galleryBagItems"></div>
+      <div class="gallery-bag-empty" id="galleryBagEmpty" hidden><h3>Your Wishlist Is Empty</h3><p>Explore our showroom and save products you'd like to discuss with our team.</p></div>
+      <div class="gallery-wishlist-links"><button type="button" id="updateWishlist">Update wishlist</button><button type="button" id="shareWishlist">Share wishlist</button></div>
+      <div class="gallery-bag-footer" id="galleryBagFooter"><strong id="galleryBagSummary">0 Products Saved</strong><a class="navbar-cta" href="index.html?quote=1#how-it-works">Get a Quote on WhatsApp&nbsp; →</a></div>
+    </div>
+  </div>
+</div>
 
 <!-- Main Content -->
 <main class="gallery-main" id="galleryMain">

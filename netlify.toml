@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+
+# Pretty / Clean URL rewrites
+[[redirects]]
+  from = "/inspirations"
+  to = "/inspirations.html"
+  status = 200
+
+# Cache static images and video assets
+[[headers]]
+  for = "/public/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
